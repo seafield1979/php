@@ -310,32 +310,26 @@ function file_test1()
 // ファイルツリーを表示
 function file_tree()
 {
-    function show_file($dir_path, $indent)
-    {        
-        $dir = opendir("./");
-        if (!$dir) {
-            return;
-        }
-
+    function show_file($dir, $indent){
         while (($file = readdir($dir)) !== false) {
-            if (is_file("$file")) {
-                echo "$indent$file\n";
-            }
-            else {
+            if (is_dir($file)) {
                 if ($file != "." && $file != "..") {
                     echo "$indent$file/\n";
-                    chdir(${file});
-                    show_file("${file}" . "/", "  " . $indent);
+                    if ($dir2 = opendir($file)) {
+                        show_file($dir2, "  " . $indent);
+                    }
                 }
             }
-        }
-        closedir($dir);
-        chdir("..");
+            else {                
+                echo "$indent$file\n";
+            }
+        } 
     }
-    
-    show_file("./", "  ");
+    if ($dir = opendir("./")) {
+        show_file($dir, "  "); 
+        closedir($dir);
+    }
 }
-
 
 // 正規表現テスト
 function re_test1()

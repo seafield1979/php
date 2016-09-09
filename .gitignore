@@ -1,2 +1,5 @@
 test/test*.txt
 
+.DS_Store
+*.txt
+*.html
