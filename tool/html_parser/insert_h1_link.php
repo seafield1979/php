@@ -7,8 +7,8 @@
         php insert_h1_link.php <マークダウンhtmlファイル名>
                                  <テンプレートhtmlファイル名>
                                  <リンク先のhtmlファイル名の先頭部分>
-                                 <出力ファイル名>
-        php insert_h1_link.php swift_memo.html _swift_top.html swift_ output.html
+                                 <出力先フォルダ名>
+        php insert_h1_link.php swift_memo.html _iOS_swift_top.html iOS_swift_　./iOS_swift/
 
     入力
         swift_memo.html
@@ -21,20 +21,15 @@
  */
 
 if ($argc < 5) {
-    exit("no input html\nphp insert_h1_link.php <マークダウンhtmlファイル名> <テンプレートhtmlファイル名> <リンク先のhtmlファイル名の先頭部分> <出力ファイル名>");
+    exit("not enought input html\nphp insert_h1_link.php <マークダウンhtmlファイル名> <テンプレートのtopページ> <リンク先のhtmlファイル名の先頭部分> <出力先フォルダパス>" );
 }
 
 // マークダウンで出力されたhtmlファイルを h1のid名をリンク名としてaタグを作成し、topHtmlファイルに挿入する
 // <a href="hoge"></a>
-function insertLinks($markdownFile, $topHtml, $link_html_head, $outputFile) {
-    print($markdownFile . "\n");
-    print($topHtml . "\n");
-    print($link_html_head . "\n");
-    print($outputFile . "\n");
-
+function insertLinks($markdownFile, $top_file_name, $link_html_head, $outputDir, $topHtml) {
     $file = file($markdownFile);
 
-    $fp = fopen($outputFile, "w");
+    $fp = fopen($outputDir . $top_file_name, "w");
     fputs($fp, $topHtml["head"]);
 
     foreach($file as $line) {
@@ -85,6 +80,6 @@ function readTopHtml($templateFile) {
 
 
 $topHtml = readTopHtml($argv[2]);
-insertLinks($argv[1], $topHtml, $argv[3], $argv[4]);
+insertLinks($argv[1], $argv[2], $argv[3], $argv[4], $topHtml);
 
 ?>
