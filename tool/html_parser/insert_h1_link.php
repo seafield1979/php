@@ -3,6 +3,13 @@
     マークダウンファイル(*.md)から出力されたhtmlファイルをh1単位でさらに分割する
     マークダウンから出力されたh1にはそれぞれidが振られているので、このidをファイル名につける
 
+    使用例:    
+        php insert_h1_link.php <マークダウンhtmlファイル名>
+                                 <テンプレートhtmlファイル名>
+                                 <リンク先のhtmlファイル名の先頭部分>
+                                 <出力ファイル名>
+        php insert_h1_link.php swift_memo.html _swift_top.html swift_ output.html
+
     入力
         swift_memo.html
             マークダウンから出力したhtmlファイル。このファイルのh1タグ毎にファイルを出力する
@@ -11,18 +18,20 @@
     出力
         swift_<h1の名前>.html  (たくさん)
 
-    使用例:    
-        php insert_h1_link.php <マークダウンhtmlファイル名> <テンプレートhtmlファイル名> <出力ファイル名>
-        php insert_h1_link.php swift_memo.html _swift_top.html output.html
  */
 
-if ($argc < 4) {
-    exit("no input html\nphp insert_h1_link.php swift_memo.html _swift_top.html hoge.html");
+if ($argc < 5) {
+    exit("no input html\nphp insert_h1_link.php <マークダウンhtmlファイル名> <テンプレートhtmlファイル名> <リンク先のhtmlファイル名の先頭部分> <出力ファイル名>");
 }
 
 // マークダウンで出力されたhtmlファイルを h1のid名をリンク名としてaタグを作成し、topHtmlファイルに挿入する
 // <a href="hoge"></a>
-function insertLinks($markdownFile, $topHtml, $outputFile) {
+function insertLinks($markdownFile, $topHtml, $link_html_head, $outputFile) {
+    print($markdownFile . "\n");
+    print($topHtml . "\n");
+    print($link_html_head . "\n");
+    print($outputFile . "\n");
+
     $file = file($markdownFile);
 
     $fp = fopen($outputFile, "w");
@@ -33,7 +42,7 @@ function insertLinks($markdownFile, $topHtml, $outputFile) {
         preg_match("/<h1 id=\"(.*)\">(.*)<\/h1>/", $line, $m);
 
         if (count($m) >= 3) {
-            $link = "swift_$m[1].html";
+            $link = "./" . $link_html_head . $m[1] . ".html";
             $atag = "<a href=\"$link\">$m[2]</a><br>\n";
             fputs($fp, $atag);
             print($m[1] . " " . $m[2] ."\n");
@@ -76,6 +85,6 @@ function readTopHtml($templateFile) {
 
 
 $topHtml = readTopHtml($argv[2]);
-insertLinks($argv[1], $topHtml, $argv[3]);
+insertLinks($argv[1], $topHtml, $argv[3], $argv[4]);
 
 ?>
