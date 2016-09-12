@@ -283,28 +283,28 @@ function file_test1()
 {
     // ファイルの内容を読み込み表示する
     echo "\n-1-\n";
-    $filename = "./text1.txt";
-    if (!($fp = @fopen($filename, "r"))) {
-        echo "failed to open file\n";
+    $filename = "./test1.txt";
+    if (!($fpr = @fopen($filename, "r"))) {
+        echo "failed to open ${filename}\n";
         return;
     }
     
-    while( ! feof( $fp ) ){
-      echo fgets( $fp, 9182 );
+    while( ! feof( $fpr ) ){
+      echo fgets( $fpr, 9182 );
     }
 
-    fclose($fp);
+    fclose($fpr);
 
     // ファイルに書き込む(追加書き込み)
     echo "\n-2-\n";
-    $filename = "./text_w.txt";
-    if (!($fp = @fopen($filename, "a+"))) {
-        echo "failed to open file\n";
+    $filename = "text_w.txt";
+    if (!($fpw = @fopen($filename, "a+"))) {
+        echo "failed to open ${filename}\n";
         return;
     }
-    fputs($fp, "hoge\n");
+    fputs($fpw, "hoge\n");
 
-    fclose($fp);
+    fclose($fpw);
 }
 
 // ファイルツリーを表示
@@ -445,6 +445,20 @@ function hash_test1()
     }
 }
 
+// jsonのテスト
+function test_json()
+{
+    // PHP -> JSON形式の文字列
+    $strJson = array("value1"=>123, "value2"=>"hoge");
+    $json = json_encode($strJson) . "\n";
+    print($json);  // $jsonはただの文字列
+
+    // JSON形式の文字列 -> PHP
+    $phpArray = json_decode($json);
+    //print($phpArray);   phpオブジェクトなのでそのままではprintできない Object of class stdClass could not be converted to string
+    print_r($phpArray);
+}
+
 // test1();
 // string_test1();
 // array_test1();
@@ -452,13 +466,14 @@ function hash_test1()
 //if_test1();
 // loop_test1();
 // func_test1();
- // file_test1();
+ file_test1();
 // file_tree();
 // re_test1();
 // class_test1();
 // include_test();
 // exception_test1();
 //convert_test();
-hash_test1();
+// hash_test1();
+// test_json();
 
 ?>
