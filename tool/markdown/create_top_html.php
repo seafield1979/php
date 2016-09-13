@@ -50,9 +50,11 @@ function insertLinks($markdownFile, $link_html_head, $outputFile, $template) {
         }
     }
 
-    // 置換チェック用
+    // 更新を反映させるために再取得
     $tags = $dom["div.toc > ul > li"];
-    print($tags);
+    
+    // 置換チェック用
+    //print($tags);
 
     // ファイル出力
     $fp = fopen($outputFile, "w");
@@ -60,6 +62,8 @@ function insertLinks($markdownFile, $link_html_head, $outputFile, $template) {
     fputs($fp, $tags);
     fputs($fp, $template["tail"]);
     fclose($fp);
+
+    print("output ${outputFile} \n");
 }
 
 function tracUlTree($tag, $fileName, $nest) {

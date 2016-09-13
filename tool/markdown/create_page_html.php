@@ -132,8 +132,7 @@ function createHtmls($infile, $outputDir, $outputFile, $template)
         $sideBarHtml .= "<li><a href=\"" . $outputFile . $value["key"] . ".html\">" . $value["title"] . "</a></li>\n";
     }
     $sideBarHtml .= "</ul>\n";
-    print($sideBarHtml);
-
+    
     // 分割したhtmlを保存
     foreach ($h1_block_list as $key=>$value) {
         if (!($fp = fopen($outputDir . $outputFile . $value["key"] . ".html", "w"))) {
@@ -169,7 +168,6 @@ function getTemplateBlocks($templateFile) {
     if (! ($file = file_get_contents($templateFile))) {
         exit("couldn't open inputfile!");
     }
-    print(strlen($file) . "\n");
 
     $blocks = array();
     $markStrLen1 = strlen("*** insert point ***");
@@ -186,9 +184,6 @@ function getTemplateBlocks($templateFile) {
         }
     }
 
-    foreach ($blocks as $value) {
-        print("size:" . strlen($value) . "\n");
-    }
     return $blocks;
 }
 
