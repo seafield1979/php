@@ -4,7 +4,7 @@
 //   php get_swift.php [解析したいhtmlファイル名] > 出力ファイル名
 
 
-require_once 'simple_html_dom.php';
+require_once '../Library/simple_html_dom.php';
 
 
 function main($htmlFile) 
@@ -15,9 +15,37 @@ function main($htmlFile)
     // 改行がそのまま
     $html = file_get_html( $htmlFile, false, null, -1, -1, true, true, DEFAULT_TARGET_CHARSET, false);
 
-    $tags = $html->find("h1 #");
+    $tags = $html->find("div.toc ul li");
     foreach($tags as $tag) {
-        echo $tag . "\n";
+        $tags2 = $tag->find("ul li");
+        if (count($tags2) == 0) {
+            // echo $tag . "no ul!\n";
+            foreach( $tag->find("a") as $element) {
+                //$element->src = str_replace($element->href, "hoge", $element->src);
+                $element->href = $element->href;
+                // echo $element . "\n";
+            }
+            //echo $tag;
+        }
+        else {
+            foreach($tags2 as $tag2) {
+                foreach($tag2->find("a") as $element) {
+                    // echo $element->href . "\n";
+                }
+            }
+        }
+        // echo $tag . "\n"; 
+    }
+
+    $tags = $html->find("div.toc ul li");
+    foreach($tags as $tag) {
+        $tags2 = $tag->find("ul li");
+        if (count($tags2) == 0) {
+            echo $tag . "no ul!\n";
+            foreach( $tag->find("a") as $element) {
+                echo $element . "\n";
+            }
+        }
     }
 }
 

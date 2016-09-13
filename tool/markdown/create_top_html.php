@@ -17,8 +17,9 @@
             テンプレート。このファイルにswift_memo.htmlの各h1ブロックを挿入してhtmlファイルとして出力する。
     出力
         swift_<h1の名前>.html  (たくさん)
-
  */
+
+require_once("../Library/phpQuery-onefile.php");
 
 if ($argc < 5) {
     exit("not enought input html\nphp insert_h1_link.php <マークダウンhtmlファイル名> <テンプレートのtopページ> <リンク先のhtmlファイル名の先頭部分> <出力先フォルダパス>" );
@@ -26,60 +27,74 @@ if ($argc < 5) {
 
 // マークダウンで出力されたhtmlファイルを h1のid名をリンク名としてaタグを作成し、topHtmlファイルに挿入する
 // <a href="hoge"></a>
-function insertLinks($markdownFile, $link_html_head, $outputFile, $topHtml) {
-    $file = file($markdownFile);
+function insertLinks($markdownFile, $link_html_head, $outputFile, $template) {
 
-    $fp = fopen($outputFile, "w");
-    fputs($fp, $topHtml["head"]);
+    $html = file_get_contents($markdownFile);
 
-    foreach($file as $line) {
-        // <h1 id="hoge"></h1> の行を境界にファイルを作成する
-        preg_match("/<h1 id=\"(.*)\">(.*)<\/h1>/", $line, $m);
+    // Get DOM Object
+    $dom = phpQuery::newDocument($html);
 
-        if (count($m) >= 3) {
-            $link = "./" . $link_html_head . $m[1] . ".html";
-            $atag = "<a href=\"$link\">$m[2]</a><br>\n";
-            fputs($fp, $atag);
-            // print($m[1] . " " . $m[2] ."\n");
+    $tags = $dom["div.toc > ul > li"];
+
+    foreach($tags as $tag) {
+        foreach( pq($tag)[">a"] as $element) {
+            $topKey = pq($element)->attr("href");
+            $topKey = str_replace("#", "", $topKey);
+            $fileName = $link_html_head . $topKey . ".html";
+            pq($element)->attr("href", $fileName);
+        }
+
+        $ul_tag = pq($tag)[">ul"];
+        if (count($ul_tag) > 0) {
+            tracUlTree($ul_tag, $fileName, 1);
         }
     }
 
-    fputs($fp, $topHtml["tail"]);
+    // 置換チェック用
+    $tags = $dom["div.toc > ul > li"];
+    print($tags);
+
+    // ファイル出力
+    $fp = fopen($outputFile, "w");
+    fputs($fp, $template["head"]);
+    fputs($fp, $tags);
+    fputs($fp, $template["tail"]);
     fclose($fp);
 }
 
+function tracUlTree($tag, $fileName, $nest) {
+    $li_tags = $tag["> li"];
 
-// swift_template.html ファイルを insert point の行を境にして２つの配列に分ける
-function readTopHtml($templateFile) {
-    if (! ($file = file($templateFile))) {
-        exit("couldn't open inputfile!");
-    }
-
-    $getFlag = false;
-    $headPart = "";
-    $tailPart = "";
-
-    // テキストを insert point の行を境に分割する
-    foreach ($file as $line) {
-        // テキストの挿入ポイントを探す
-        if ($getFlag == false) {
-            if (strpos($line, "*** insert point ***") !== false){
-                $getFlag = true;
-                continue;
-            }
-            $headPart .= $line;
-            // print("+++" . $line);
+    foreach($li_tags as $li_tag) {
+        foreach( pq($li_tag)[">a"] as $element) {
+            pq($element)->attr("href", $fileName . pq($element)->attr("href"));
         }
-        else {
-            $tailPart .= $line;
-            // print("---" . $line);
+
+        $ul_tags = pq($li_tag)[">ul"];
+        if (count($ul_tags) > 0) {
+            tracUlTree($ul_tags, $fileName, $nest);
         }
     }
-    return array("head"=>$headPart, "tail"=>$tailPart);
 }
 
 
-$topHtml = readTopHtml($argv[2]);
-insertLinks($argv[1], $argv[3], $argv[4], $topHtml);
+
+// swift_template.html ファイルを insert point の行を境にして２つの配列に分ける
+function readTemplate($templateFile) {
+    if (! ($file = file_get_contents($templateFile))) {
+        exit("couldn't open inputfile!");
+    }
+
+    $template = array();
+    if ($pos = strpos($file, "*** insert point ***")) {
+        $template['head'] = substr($file, 0, $pos);
+        $template['tail'] = substr($file, $pos + strlen("*** insert point ***"));
+    }
+    return $template;
+}
+
+
+$template = readTemplate($argv[2]);
+insertLinks($argv[1], $argv[3], $argv[4], $template);
 
 ?>
