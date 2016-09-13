@@ -2,4 +2,6 @@ test/test*.txt
 
 .DS_Store
 *.txt
-*.html
+/tool/html_parser/backup
+/tool/html_parser/iOS_swift_html
+/tool/html_parser/swift_html

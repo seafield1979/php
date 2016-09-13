@@ -7,8 +7,8 @@
         php insert_h1_link.php <マークダウンhtmlファイル名>
                                  <テンプレートhtmlファイル名>
                                  <リンク先のhtmlファイル名の先頭部分>
-                                 <出力先フォルダ名>
-        php insert_h1_link.php swift_memo.html _iOS_swift_top.html iOS_swift_　./iOS_swift/
+                                 <出力先ファイル名>
+        php insert_h1_link.php swift_memo.html _iOS_swift_top.html iOS_swift_　./iOS_swift/iOS_swift_top.html
 
     入力
         swift_memo.html
@@ -26,10 +26,10 @@ if ($argc < 5) {
 
 // マークダウンで出力されたhtmlファイルを h1のid名をリンク名としてaタグを作成し、topHtmlファイルに挿入する
 // <a href="hoge"></a>
-function insertLinks($markdownFile, $top_file_name, $link_html_head, $outputDir, $topHtml) {
+function insertLinks($markdownFile, $link_html_head, $outputFile, $topHtml) {
     $file = file($markdownFile);
 
-    $fp = fopen($outputDir . $top_file_name, "w");
+    $fp = fopen($outputFile, "w");
     fputs($fp, $topHtml["head"]);
 
     foreach($file as $line) {
@@ -40,7 +40,7 @@ function insertLinks($markdownFile, $top_file_name, $link_html_head, $outputDir,
             $link = "./" . $link_html_head . $m[1] . ".html";
             $atag = "<a href=\"$link\">$m[2]</a><br>\n";
             fputs($fp, $atag);
-            print($m[1] . " " . $m[2] ."\n");
+            // print($m[1] . " " . $m[2] ."\n");
         }
     }
 
@@ -68,11 +68,11 @@ function readTopHtml($templateFile) {
                 continue;
             }
             $headPart .= $line;
-            print("+++" . $line);
+            // print("+++" . $line);
         }
         else {
             $tailPart .= $line;
-            print("---" . $line);
+            // print("---" . $line);
         }
     }
     return array("head"=>$headPart, "tail"=>$tailPart);
@@ -80,6 +80,6 @@ function readTopHtml($templateFile) {
 
 
 $topHtml = readTopHtml($argv[2]);
-insertLinks($argv[1], $argv[2], $argv[3], $argv[4], $topHtml);
+insertLinks($argv[1], $argv[3], $argv[4], $topHtml);
 
 ?>

@@ -49,9 +49,8 @@ function createHtmls($infile, $template, $outputfile)
 
             $key = $m[1];
 
-            print($outputfile . $m[1] . ".html\n");
-            // fputs($fp, $template["head"]);
-
+            // print($outputfile . $m[1] . ".html\n");
+            
             $getFlag = true;
         }
         if ($getFlag) {
@@ -59,7 +58,6 @@ function createHtmls($infile, $template, $outputfile)
         }
     }
     $h1_block_list[$block_cnt] = array("key"=>$key, "body" => $h1_block_body);
-    
 
 
     // リンク部分を取得
@@ -90,6 +88,9 @@ function createHtmls($infile, $template, $outputfile)
 
                 // 次のブロック検索文字列
                 $block_cnt++;
+                if ($block_cnt >= count($h1_block_list)){
+                    break;
+                }
                 $searchStr = "<li><a href=\"#" . $h1_block_list[$block_cnt]["key"] . "\">";
                 $mode = 1;
             }
