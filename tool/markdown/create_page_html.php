@@ -5,9 +5,12 @@
     使用例:    
         php get_h1_block.php <マークダウンhtmlファイル名>
                              <テンプレートhtmlファイル名>
-                             <フォルダパス&ファイル名>
-        php get_h1_block.php swift_memo.html _swift_template.html ./swift_html/swift_
-
+                             <フォルダパス>
+                             <ファイル名>
+        php get_h1_block.php swift_memo.html
+                              _swift_template.html
+                              ./swift_html/
+                              swift_
     入力
         swift_memo.html
             マークダウンから出力したhtmlファイル。このファイルのh1タグ毎にファイルを出力する
@@ -25,8 +28,9 @@ if ($argc < 4) {
 // マークダウンで出力されたhtmlファイルを h1 タグ毎に分割し、テンプレートファイルに挿入してファイルに出力する
 // $infile:  マークダウンのhtmlファイル
 // $template:   テンプレートhtmlを分割した配列("head":前半部分, "tail":後半部分)
-// $outputfile:   出力ファイル名(フォルダ＆ファイル名先頭)
-function createHtmls($infile, $template, $outputfile) 
+// $outputDir:   出力フォルダパス 
+// $outputFile:   出力ファイル名の先頭部分
+function createHtmls($infile, $outputDir, $outputFile, $template)
 {
     $file = file($infile);
     $getFlag = false;
@@ -36,6 +40,10 @@ function createHtmls($infile, $template, $outputfile)
     $h1_block_body = "";
 
     foreach($file as $line) {
+        // 記事の終点のタグを見つけたら終了
+        if (strpos($line, "</article>") !== false) {
+            break;
+        }
         // <h1 id="hoge"></h1> の行を境界にファイルを作成する
         preg_match('/^<h1 id="(.*)"/', $line, $m);
 
@@ -48,9 +56,6 @@ function createHtmls($infile, $template, $outputfile)
             }
 
             $key = $m[1];
-
-            // print($outputfile . $m[1] . ".html\n");
-            
             $getFlag = true;
         }
         if ($getFlag) {
@@ -64,9 +69,10 @@ function createHtmls($infile, $template, $outputfile)
     $mode = 0;
     $block_cnt = 0;
     $link_html = "";
+    $title = "";
     // ブロック検索文字列
     // <li><a href="#uiwindow">UIWindow</a><ul> のような行を見つける
-    $searchStr = "<li><a href=\"#" . $h1_block_list[$block_cnt]["key"] . "\">";
+    $searchStr = "/<li><a href=\"#(.+)\">(.+)<\/a>/";
                 
     foreach($file as $line) {
         if ($mode == 0) {
@@ -85,28 +91,29 @@ function createHtmls($infile, $template, $outputfile)
                 // 保存
                 $link_html .= $line;
                 $h1_block_list[$block_cnt]["link"] = $link_html;
+                $h1_block_list[$block_cnt]["title"] = $title;
 
-                // 次のブロック検索文字列
                 $block_cnt++;
                 if ($block_cnt >= count($h1_block_list)){
                     break;
                 }
-                $searchStr = "<li><a href=\"#" . $h1_block_list[$block_cnt]["key"] . "\">";
                 $mode = 1;
             }
-            elseif (strpos($line, $searchStr) !== false ) {
+            elseif (preg_match($searchStr, $line, $m) &&
+                     $m[1]==$h1_block_list[$block_cnt]["key"] ) 
+            {
                 $link_html = $line;
+                $title = $m[2];
                     
                 // h1のブロックのリンクと同じ行に </li>があったら１行でhtmlが完結
                 if (strrpos($line, "</li>") !== false) {
                     $h1_block_list[$block_cnt]["link"] = $link_html;
+                    $h1_block_list[$block_cnt]["title"] = $title;
                     $block_cnt++;
                 }
                 else {
                     $mode = 2;  // </ul>を探すモード
                 }
-                // 次のブロック検索文字列
-                $searchStr = "<li><a href=\"#" . $h1_block_list[$block_cnt]["key"] . "\">";
             }
             else {
                 $link_html .= $line;
@@ -116,16 +123,24 @@ function createHtmls($infile, $template, $outputfile)
 
     // デバッグ
     foreach ($h1_block_list as $key=>$value) {
-        print "${key} : ${value["key"]},  link: " . strlen($value["link"]) . "  body: " . strlen($value["body"]) . "\n";
+        print "${key} : " . $value["key"] . ", title: " . $value["title"] . "\n";
     }
+
+    // サイドバー用のタグを作成する
+    $sideBarHtml = "<ul>\n";
+    foreach ($h1_block_list as $value) {
+        $sideBarHtml .= "<li><a href=\"" . $outputFile . $value["key"] . ".html\">" . $value["title"] . "</a></li>\n";
+    }
+    $sideBarHtml .= "</ul>\n";
+    print($sideBarHtml);
 
     // 分割したhtmlを保存
     foreach ($h1_block_list as $key=>$value) {
-        if (!($fp = fopen($outputfile . $value["key"] . ".html", "w"))) {
+        if (!($fp = fopen($outputDir . $outputFile . $value["key"] . ".html", "w"))) {
             break;
         }
         // *** insert point *** まで
-        fputs($fp, $template["head"]);
+        fputs($fp, $template[0]);
 
         // ページ内リンク
         fputs($fp, "<ul>\n");
@@ -133,48 +148,51 @@ function createHtmls($infile, $template, $outputfile)
         fputs($fp, "\n</ul>\n");
         
         // 本体
-        fputs($fp, $value['body']);
+        fputs($fp, $value["body"]);
         
-        // *** insert point *** の後ろ
-        fputs($fp, $template["tail"]);
+        // *** insert point *** から *** sidebar point *** まで
+        fputs($fp, $template[1]);
+
+        // サイドバーに各htmlファイルのリンクを挿入
+        fputs($fp, $sideBarHtml);
+        fputs($fp, $template[2]);
 
         fclose($fp);
     }
 }
 
-
-// swift_template.html ファイルを insert point の行を境にして２つの配列に分ける
-function readTemplate($templateFile) {
-    if (! ($file = file($templateFile))) {
+// テンプレートのファイルを分割する
+// 先頭 ~ insert point まで
+// insert point ~ sidebar point まで
+// sidebar point ~ 末尾 まで
+function getTemplateBlocks($templateFile) {
+    if (! ($file = file_get_contents($templateFile))) {
         exit("couldn't open inputfile!");
     }
+    print(strlen($file) . "\n");
 
-    $getFlag = false;
-    $headPart = "";
-    $tailPart = "";
+    $blocks = array();
+    $markStrLen1 = strlen("*** insert point ***");
+    $markStrLen2 = strlen("*** sidebar point ***");
 
-    // テキストを insert point の行を境に分割する
-    foreach ($file as $line) {
-        // テキストの挿入ポイントを探す
-        if ($getFlag == false) {
-            if (strpos($line, "*** insert point ***") !== false){
-                $getFlag = true;
-                continue;
-            }
-            $headPart .= $line;
-            // print("+++" . $line);
-        }
-        else {
-            $tailPart .= $line;
-            // print("---" . $line);
+    if ($pos = strpos($file, "*** insert point ***")) {
+        if ($pos2 = strpos($file, "*** sidebar point ***")) {
+            // insert point までのブロックを $blocksに追加
+            $blocks[0] = substr($file, 0, $pos - 1);
+            // insert point から sidebar point までのブロックを追加
+            $blocks[1] = substr($file, $pos + $markStrLen1, $pos2 - $pos - $markStrLen1);
+            // sidebar point から末尾までのブロックを追加
+            $blocks[2] = substr($file, $pos2 + $markStrLen2);
         }
     }
-    return array("head"=>$headPart, "tail"=>$tailPart);
+
+    foreach ($blocks as $value) {
+        print("size:" . strlen($value) . "\n");
+    }
+    return $blocks;
 }
 
-// function get_link_list()
-
-$template = readTemplate($argv[2]);
-createHtmls($argv[1], $template, $argv[3]);
+$template = getTemplateBlocks($argv[2]);
+createHtmls($argv[1], $argv[3], $argv[4], $template);
 
 ?>
