@@ -20,14 +20,15 @@
  */
 
 require_once("../Library/phpQuery-onefile.php");
+require_once("markdown_html_tool.php");
 
 if ($argc < 5) {
-    exit("not enought input html\nphp insert_h1_link.php <マークダウンhtmlファイル名> <テンプレートのtopページ> <リンク先のhtmlファイル名の先頭部分> <出力先フォルダパス>" );
+    print("not enought input html\nphp insert_h1_link.php <マークダウンhtmlファイル名> <テンプレートのtopページ> <リンク先のhtmlファイル名の先頭部分> <出力先フォルダパス>" );
 }
 
 // マークダウンで出力されたhtmlファイルを h1のid名をリンク名としてaタグを作成し、topHtmlファイルに挿入する
 // <a href="hoge"></a>
-function insertLinks($markdownFile, $link_html_head, $outputFile, $template) {
+function createTopHtml($markdownFile, $link_html_head, $outputFile, $template, $sidebarLinks) {
 
     $html = file_get_contents($markdownFile);
 
@@ -58,9 +59,11 @@ function insertLinks($markdownFile, $link_html_head, $outputFile, $template) {
 
     // ファイル出力
     $fp = fopen($outputFile, "w");
-    fputs($fp, $template["head"]);
+    fputs($fp, $template[0]);
     fputs($fp, $tags);
-    fputs($fp, $template["tail"]);
+    fputs($fp, $template[1]);
+    fputs($fp, $sidebarLinks);
+    fputs($fp, $template[2]);
     fclose($fp);
 
     print("output ${outputFile} \n");
@@ -81,24 +84,9 @@ function tracUlTree($tag, $fileName, $nest) {
     }
 }
 
-
-
-// swift_template.html ファイルを insert point の行を境にして２つの配列に分ける
-function readTemplate($templateFile) {
-    if (! ($file = file_get_contents($templateFile))) {
-        exit("couldn't open inputfile!");
-    }
-
-    $template = array();
-    if ($pos = strpos($file, "*** insert point ***")) {
-        $template['head'] = substr($file, 0, $pos);
-        $template['tail'] = substr($file, $pos + strlen("*** insert point ***"));
-    }
-    return $template;
-}
-
-
-$template = readTemplate($argv[2]);
-insertLinks($argv[1], $argv[3], $argv[4], $template);
+$template = getTemplate($argv[2]);
+$block_list = makeH1BlockList($argv[1]);
+$sidebarLinks = makeSidebarLinks($argv[3], $block_list);
+createTopHtml($argv[1], $argv[3], $argv[4], $template, $sidebarLinks);
 
 ?>
