@@ -3,11 +3,11 @@
     マークダウンファイル(*.md)から出力されたhtmlファイルをh1単位でさらに分割する
     マークダウンから出力されたh1にはそれぞれidが振られているので、このidをファイル名につける
     使用例:    
-        php get_h1_block.php <マークダウンhtmlファイル名>
+        php create_page_html.php <マークダウンhtmlファイル名>
                              <テンプレートhtmlファイル名>
                              <html出力フォルダパス>
                              <ファイル名>
-        php get_h1_block.php swift_memo.html
+        php create_page_html.php swift_memo.html
                               _swift_template.html
                               ./swift_html/
                               swift_

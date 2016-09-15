@@ -4,11 +4,11 @@
     マークダウンから出力されたh1にはそれぞれidが振られているので、このidをファイル名につける
 
     使用例:    
-        php insert_h1_link.php <マークダウンhtmlファイル名>
+        php create_top_html.php <マークダウンhtmlファイル名>
                                  <テンプレートhtmlファイル名>
                                  <リンク先のhtmlファイル名の先頭部分>
                                  <出力先ファイル名>
-        php insert_h1_link.php swift_memo.html _iOS_swift_top.html iOS_swift_　./iOS_swift/iOS_swift_top.html
+        php create_top_html.php swift_memo.html _iOS_swift_top.html iOS_swift_　./iOS_swift/iOS_swift_top.html
 
     入力
         swift_memo.html
