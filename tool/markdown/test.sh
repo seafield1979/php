@@ -4,6 +4,15 @@
 # sh test.sh 
 # で実行
 
+#SublimeText
+function create_sublime() {
+    if [ ! -e sublime ]; then
+        `mkdir sublime`
+    fi
+    php create_page_html.php "_sublime_memo.html" "_sublime_template.html" "./sublime/" "sublime_"
+    php create_top_html.php "_sublime_memo.html" "_sublime_template.html" "sublime_" "./sublime/_sublime_top.html"
+}
+
 #Markdown
 function create_markdown() {
     if [ ! -e markdown ]; then
@@ -48,6 +57,7 @@ function create_iOS_swift() {
     php create_top_html.php "_swift_iOS_memo.html" "_swift_iOS_template.html" "swift_iOS_" "./swift_iOS/_swift_iOS_top.html"
 }
 
-create_markdown
+create_sublime
+# create_markdown
 # create_shell
 # create_php

@@ -18,7 +18,7 @@
  */
 
 require_once("../Library/phpQuery-onefile.php");
-require_once("markdown_html_tool.php");
+require_once("markdown_tool.php");
 
 if ($argc < 4) {
     print("not enought input html\nphp insert_h1_link.php <マークダウンhtmlファイル名> <テンプレートのtopページ> <出力先フォルダパス>" );

@@ -67,11 +67,7 @@ html;
 $dom1 = phpQuery::newDocumentHTML($html);
 
 // セレクター (['div.toc']とか)で取得できるのはDOMオブジェクトの配列形式
-$tag_top = $dom1['div#top'];
-
-
-$array1 = array(1,2,3,4,5);
-var_dump($array1);
+$tag_top = $dom1['.ul1 > li'];
 
 $mode = 4;
 

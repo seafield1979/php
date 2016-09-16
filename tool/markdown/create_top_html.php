@@ -20,7 +20,7 @@
  */
 
 require_once("../Library/phpQuery-onefile.php");
-require_once("markdown_html_tool.php");
+require_once("markdown_tool.php");
 
 if ($argc < 5) {
     print("not enought input html\nphp insert_h1_link.php <マークダウンhtmlファイル名> <テンプレートのtopページ> <リンク先のhtmlファイル名の先頭部分> <出力先フォルダパス>" );
@@ -43,6 +43,10 @@ function createTopHtml($markdownFile, $link_html_head, $outputFile, $template, $
             $topKey = str_replace("#", "", $topKey);
             $fileName = $link_html_head . $topKey . ".html";
             pq($element)->attr("href", $fileName);
+
+            // h1ブロックのテキスト部分をスペースで分割して左側だけ残す
+            $titles = explode(" ", pq($element)->text());
+            pq($element)->text($titles[0]);
         }
 
         $ul_tag = pq($tag)[">ul"];
@@ -52,7 +56,7 @@ function createTopHtml($markdownFile, $link_html_head, $outputFile, $template, $
     }
 
     // 更新を反映させるために再取得
-    $tags = $dom["div.toc > ul > li"];
+    //$tags = $dom["div.toc > ul > li"];
     
     // 置換チェック用
     //print($tags);

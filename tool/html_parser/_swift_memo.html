@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>04_swift_memo.md—/Users/shutaro/Dropbox/document/programing/apple</title>
+    <style type="text/css">
+    html{font-family: sans-serif;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%}body{margin: 0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display: block}audio,canvas,progress,video{display: inline-block;vertical-align: baseline}audio:not([controls]){display: none;height: 0}[hidden],template{display: none}a{background: transparent}a:active,a:hover{outline: 0}abbr[title]{border-bottom: 1px dotted}b,strong{font-weight: bold}dfn{font-style: italic}h1{font-size: 2em;margin: 0.67em 0}mark{background: #ff0;color: #000}small{font-size: 80%}sub,sup{font-size: 75%;line-height: 0;position: relative;vertical-align: baseline}sup{top: -0.5em}sub{bottom: -0.25em}img{border: 0}svg:not(:root){overflow: hidden}figure{margin: 1em 40px}hr{box-sizing: content-box;height: 0}pre{overflow: auto}code,kbd,pre,samp{font-family: monospace, monospace;font-size: 1em}button,input,optgroup,select,textarea{color: inherit;font: inherit;margin: 0}button{overflow: visible}button,select{text-transform: none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance: button;cursor: pointer}button[disabled],html input[disabled]{cursor: default}button::-moz-focus-inner,input::-moz-focus-inner{border: 0;padding: 0}input{line-height: normal}input[type="checkbox"],input[type="radio"]{box-sizing: border-box;padding: 0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height: auto}input[type="search"]{-webkit-appearance: textfield;box-sizing: content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance: none}fieldset{border: 1px solid #c0c0c0;margin: 0 2px;padding: 0.35em 0.625em 0.75em}legend{border: 0;padding: 0}textarea{overflow: auto}optgroup{font-weight: bold}table{border-collapse: collapse;border-spacing: 0}td,th{padding: 0}*{box-sizing: border-box}input,select,textarea,button{font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"}body{min-width: 1020px;font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";color: #333;background-color: #fff}a{color: #4183c4;text-decoration: none}a:hover,a:active{text-decoration: underline}hr,.rule{height: 0;margin: 15px 0;overflow: hidden;background: transparent;border: 0;border-bottom: 1px solid #ddd}hr:before,.rule:before{display: table;content: ""}hr:after,.rule:after{display: table;clear: both;content: ""}h1,h2,h3,h4,h5,h6{margin-top: 15px;margin-bottom: 15px;line-height: 1.1}h1{font-size: 30px}h2{font-size: 21px}h3{font-size: 16px}h4{font-size: 14px}h5{font-size: 12px}h6{font-size: 11px}small{font-size: 90%}blockquote{margin: 0}.lead{margin-bottom: 30px;font-size: 20px;font-weight: 300;color: #555}.text-muted{color: #999}.text-danger{color: #bd2c00}.text-emphasized{font-weight: bold;color: #333}ul,ol{padding: 0;margin-top: 0;margin-bottom: 0}ol ol,ul ol{list-style-type: lower-roman}ul ul ol,ul ol ol,ol ul ol,ol ol ol{list-style-type: lower-alpha}dd{margin-left: 0}tt,code{font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;font-size: 12px}pre{margin-top: 0;margin-bottom: 0;font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace}#realtime .status{overflow: visible;position: absolute;top: -5px;left: 0;background: url("/public/images/github-status.png");width: 26px;height: 26px;display: block;margin: 0 5px 0 0}#realtime .up{background-position: 0 0}#realtime .problem{background-position: 0 -53px}#realtime .down{background-position: 0 -26px}.container{max-width: 920px;margin: 0 auto 20px auto}#header{background: #FAFAFA;background: -moz-linear-gradient(#FAFAFA, #EAEAEA);background: -webkit-linear-gradient(#FAFAFA, #EAEAEA);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#eaeaea')";border-bottom: 1px solid #CACACA;box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4),0 0 10px rgba(0, 0, 0, 0.1)}#markup{padding: 3px}#markup article{padding-top: 30px}.markdown-body{overflow: hidden;font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;font-size: 16px;line-height: 1.6;word-wrap: break-word}.markdown-body>*:first-child{margin-top: 0 !important}.markdown-body>*:last-child{margin-bottom: 0 !important}.markdown-body .absent{color: #c00}.markdown-body .anchor{position: absolute;top: 0;left: 0;display: block;padding-right: 6px;padding-left: 30px;margin-left: -30px}.markdown-body .anchor:focus{outline: none}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{position: relative;margin-top: 1em;margin-bottom: 16px;font-weight: bold;line-height: 1.4}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{display: none;color: #000;vertical-align: middle}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{padding-left: 8px;margin-left: -30px;text-decoration: none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{display: inline-block}.markdown-body h1 tt,.markdown-body h1 code,.markdown-body h2 tt,.markdown-body h2 code,.markdown-body h3 tt,.markdown-body h3 code,.markdown-body h4 tt,.markdown-body h4 code,.markdown-body h5 tt,.markdown-body h5 code,.markdown-body h6 tt,.markdown-body h6 code{font-size: inherit}.markdown-body h1{padding-bottom: 0.3em;font-size: 2.25em;line-height: 1.2;border-bottom: 1px solid #eee}.markdown-body h1 .anchor{line-height: 1}.markdown-body h2{padding-bottom: 0.3em;font-size: 1.75em;line-height: 1.225;border-bottom: 1px solid #eee}.markdown-body h2 .anchor{line-height: 1}.markdown-body h3{font-size: 1.5em;line-height: 1.43}.markdown-body h3 .anchor{line-height: 1.2}.markdown-body h4{font-size: 1.25em}.markdown-body h4 .anchor{line-height: 1.2}.markdown-body h5{font-size: 1em}.markdown-body h5 .anchor{line-height: 1.1}.markdown-body h6{font-size: 1em;color: #777}.markdown-body h6 .anchor{line-height: 1.1}.markdown-body p,.markdown-body blockquote,.markdown-body ul,.markdown-body ol,.markdown-body dl,.markdown-body table,.markdown-body pre{margin-top: 0;margin-bottom: 16px}.markdown-body hr{height: 4px;padding: 0;margin: 16px 0;background-color: #e7e7e7;border: 0 none}.markdown-body ul,.markdown-body ol{padding-left: 2em}.markdown-body ul.no-list,.markdown-body ol.no-list{padding: 0;list-style-type: none}.markdown-body ul ul,.markdown-body ul ol,.markdown-body ol ol,.markdown-body ol ul{margin-top: 0;margin-bottom: 0}.markdown-body li>p{margin-top: 16px}.markdown-body dl{padding: 0}.markdown-body dl dt{padding: 0;margin-top: 16px;font-size: 1em;font-style: italic;font-weight: bold}.markdown-body dl dd{padding: 0 16px;margin-bottom: 16px}.markdown-body blockquote{padding: 0 15px;color: #777;border-left: 4px solid #ddd}.markdown-body blockquote>:first-child{margin-top: 0}.markdown-body blockquote>:last-child{margin-bottom: 0}.markdown-body table{display: block;width: 100%;overflow: auto;word-break: normal;word-break: keep-all}.markdown-body table th{font-weight: bold}.markdown-body table th,.markdown-body table td{padding: 6px 13px;border: 1px solid #ddd}.markdown-body table tr{background-color: #fff;border-top: 1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color: #f8f8f8}.markdown-body img{max-width: 100%;box-sizing: border-box}.markdown-body span.frame{display: block;overflow: hidden}.markdown-body span.frame>span{display: block;float: left;width: auto;padding: 7px;margin: 13px 0 0;overflow: hidden;border: 1px solid #ddd}.markdown-body span.frame span img{display: block;float: left}.markdown-body span.frame span span{display: block;padding: 5px 0 0;clear: both;color: #333}.markdown-body span.align-center{display: block;overflow: hidden;clear: both}.markdown-body span.align-center>span{display: block;margin: 13px auto 0;overflow: hidden;text-align: center}.markdown-body span.align-center span img{margin: 0 auto;text-align: center}.markdown-body span.align-right{display: block;overflow: hidden;clear: both}.markdown-body span.align-right>span{display: block;margin: 13px 0 0;overflow: hidden;text-align: right}.markdown-body span.align-right span img{margin: 0;text-align: right}.markdown-body span.float-left{display: block;float: left;margin-right: 13px;overflow: hidden}.markdown-body span.float-left span{margin: 13px 0 0}.markdown-body span.float-right{display: block;float: right;margin-left: 13px;overflow: hidden}.markdown-body span.float-right>span{display: block;margin: 13px auto 0;overflow: hidden;text-align: right}.markdown-body code,.markdown-body tt{padding: 0;padding-top: 0.2em;padding-bottom: 0.2em;margin: 0;font-size: 85%;background-color: rgba(0,0,0,0.04);border-radius: 3px}.markdown-body code:before,.markdown-body code:after,.markdown-body tt:before,.markdown-body tt:after{letter-spacing: -0.2em;content: "\00a0"}.markdown-body code br,.markdown-body tt br{display: none}.markdown-body del code{text-decoration: inherit}.markdown-body pre>code{padding: 0;margin: 0;font-size: 100%;word-break: normal;white-space: pre;background: transparent;border: 0}.markdown-body .highlight{margin-bottom: 16px}.markdown-body .highlight pre,.markdown-body pre{padding: 16px;overflow: auto;font-size: 85%;line-height: 1.45;background-color: #f7f7f7;border-radius: 3px}.markdown-body .highlight pre{margin-bottom: 0;word-break: normal}.markdown-body pre{word-wrap: normal}.markdown-body pre code,.markdown-body pre tt{display: inline;max-width: initial;padding: 0;margin: 0;overflow: initial;line-height: inherit;word-wrap: normal;background-color: transparent;border: 0}.markdown-body pre code:before,.markdown-body pre code:after,.markdown-body pre tt:before,.markdown-body pre tt:after{content: normal}.markdown-body kbd{display: inline-block;padding: 3px 5px;font-size: 11px;line-height: 10px;color: #555;vertical-align: middle;background-color: #fcfcfc;border: solid 1px #ccc;border-bottom-color: #bbb;border-radius: 3px;box-shadow: inset 0 -1px 0 #bbb}.codehilite{background: #ffffff}.codehilite .c{color: #999988;font-style: italic}.codehilite .err{color: #a61717;background-color: #e3d2d2}.codehilite .k{color: #000000;font-weight: bold}.codehilite .o{color: #000000;font-weight: bold}.codehilite .cm{color: #999988;font-style: italic}.codehilite .cp{color: #999999;font-weight: bold}.codehilite .c1{color: #999988;font-style: italic}.codehilite .cs{color: #999999;font-weight: bold;font-style: italic}.codehilite .gd{color: #000000;background-color: #ffdddd}.codehilite .gd .x{color: #000000;background-color: #ffaaaa}.codehilite .ge{color: #000000;font-style: italic}.codehilite .gr{color: #aa0000}.codehilite .gh{color: #999999}.codehilite .gi{color: #000000;background-color: #ddffdd}.codehilite .gi .x{color: #000000;background-color: #aaffaa}.codehilite .go{color: #888888}.codehilite .gp{color: #555555}.codehilite .gs{font-weight: bold}.codehilite .gu{color: #aaaaaa}.codehilite .gt{color: #aa0000}.codehilite .kc{color: #000000;font-weight: bold}.codehilite .kd{color: #000000;font-weight: bold}.codehilite .kp{color: #000000;font-weight: bold}.codehilite .kr{color: #000000;font-weight: bold}.codehilite .kt{color: #445588;font-weight: bold}.codehilite .m{color: #009999}.codehilite .s{color: #d14}.codehilite .na{color: #008080}.codehilite .nb{color: #0086B3}.codehilite .nc{color: #445588;font-weight: bold}.codehilite .no{color: #008080}.codehilite .ni{color: #800080}.codehilite .ne{color: #990000;font-weight: bold}.codehilite .nf{color: #990000;font-weight: bold}.codehilite .nn{color: #555555}.codehilite .nt{color: #000080}.codehilite .nv{color: #008080}.codehilite .ow{color: #000000;font-weight: bold}.codehilite .w{color: #bbbbbb}.codehilite .mf{color: #009999}.codehilite .mh{color: #009999}.codehilite .mi{color: #009999}.codehilite .mo{color: #009999}.codehilite .sb{color: #d14}.codehilite .sc{color: #d14}.codehilite .sd{color: #d14}.codehilite .s2{color: #d14}.codehilite .se{color: #d14}.codehilite .sh{color: #d14}.codehilite .si{color: #d14}.codehilite .sx{color: #d14}.codehilite .sr{color: #009926}.codehilite .s1{color: #d14}.codehilite .ss{color: #990073}.codehilite .bp{color: #999999}.codehilite .vc{color: #008080}.codehilite .vg{color: #008080}.codehilite .vi{color: #008080}.codehilite .il{color: #009999}
+    </style>
+    <style type="text/css">
+      .markdown-body hr{background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC")}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="markup">
+        <article id="content" class="markdown-body">
+          <!-- Stylesheet -->
+
+<p><link href="http://kevinburke.bitbucket.org/markdowncss/markdown.css" rel="stylesheet"></link>
+<link href="http://sunsunsoft.com/css/hoge.css" rel="stylesheet"></link></p>
+<p><span class="title">Swift Memo</span></p>
+<!-- もくじ -->
+
+<div class="toc">
+<ul>
+<li><a href="#web">学習webページ</a></li>
+<li><a href="#basic">基本仕様 basic</a></li>
+<li><a href="#swift-coding">Swiftコーディング規約 coding</a><ul>
+<li><a href="#_1">命名規則</a><ul>
+<li><a href="#_2">初期値を代入する場合は変数の型名をつけない</a></li>
+<li><a href="#_3">配列の初期化</a></li>
+<li><a href="#_4">関数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#print">文字列表示 print</a></li>
+<li><a href="#basic_1">基本(basic)</a><ul>
+<li><a href="#_5">コメント</a></li>
+</ul>
+</li>
+<li><a href="#variable">変数 variable</a><ul>
+<li><a href="#_6">型</a></li>
+<li><a href="#_7">変数宣言</a></li>
+</ul>
+</li>
+<li><a href="#if-if">if文 if</a></li>
+<li><a href="#for-for">for文 for</a></li>
+<li><a href="#switchcase">switch~case</a></li>
+<li><a href="#string">文字列 string</a><ul>
+<li><a href="#_8">基本</a></li>
+<li><a href="#_9">正規表現処理クラス</a></li>
+</ul>
+</li>
+<li><a href="#is-as">is as</a><ul>
+<li><a href="#as">as</a></li>
+<li><a href="#is">is</a></li>
+</ul>
+</li>
+<li><a href="#array">配列 array</a><ul>
+<li><a href="#_10">配列変数の宣言</a></li>
+<li><a href="#_11">配列の参照 (配列名[インデックス])</a></li>
+<li><a href="#_12">配列の操作</a><ul>
+<li><a href="#append">要素の追加 (.append)</a></li>
+<li><a href="#_13">配列の追加 (+=[])</a></li>
+<li><a href="#_14">要素の変更</a></li>
+<li><a href="#removeatindex">要素の削除 (removeAtIndex)</a></li>
+<li><a href="#repeatedvalue">repeatedValue 配列を指定の値で初期化する</a></li>
+</ul>
+</li>
+<li><a href="#_15">便利関数</a><ul>
+<li><a href="#map">map</a></li>
+<li><a href="#filter">filter</a></li>
+<li><a href="#sort">sort</a></li>
+<li><a href="#reverse">reverse</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#dictionary">辞書型配列 dictionary</a></li>
+<li><a href="#tuple">タプル tuple</a><ul>
+<li><a href="#_16">名前なしタプル</a></li>
+<li><a href="#_17">複数の変数をまとめて宣言するタプル</a></li>
+<li><a href="#_18">名前つきタプル ★</a></li>
+<li><a href="#_19">関数の戻り値としてタプルを返す</a></li>
+</ul>
+</li>
+<li><a href="#function">関数 function</a><ul>
+<li><a href="#_20">基本</a></li>
+<li><a href="#_21">関数のサンプル</a></li>
+<li><a href="#_22">オーバーロード</a></li>
+<li><a href="#_23">可変引数。可変引数は配列として関数に渡される</a></li>
+</ul>
+</li>
+<li><a href="#class">クラス  class</a><ul>
+<li><a href="#_24">クラスの宣言</a></li>
+<li><a href="#_25">オブジェクトの生成</a></li>
+<li><a href="#_26">クラスの判定（あるクラスを継承しているかどうか）</a></li>
+<li><a href="#_27">インスタンス変数からクラス名を取得</a></li>
+<li><a href="#_28">クラスメソッド</a></li>
+<li><a href="#inherit">クラスの継承 inherit</a></li>
+<li><a href="#_29">メソッドのオーバーライド</a></li>
+<li><a href="#final">オーバーライドを禁止する (final)</a></li>
+<li><a href="#init-deinit">イニシャライザ init deinit</a><ul>
+<li><a href="#_30">イニシャライザとデイニシャライザ</a></li>
+<li><a href="#_31">指定イニシャライザ</a></li>
+<li><a href="#_32">コンビニエンスイニシャライザ</a></li>
+</ul>
+</li>
+<li><a href="#property">プロパティ (Property)</a><ul>
+<li><a href="#stored-property">保持型プロパティ (Stored Property)</a></li>
+<li><a href="#computed-property">計算型プロパティ (Computed Property)</a></li>
+<li><a href="#gettersetter">ゲッターセッター  getter/setter</a></li>
+</ul>
+</li>
+<li><a href="#_33">値変更の監視</a></li>
+<li><a href="#_34">ゲッターセッターと値の監視を共存</a></li>
+<li><a href="#cast">クラスのキャスト cast</a></li>
+<li><a href="#extension">エクステンション extension</a><ul>
+<li><a href="#_35">拡張例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#pragma">pragma</a></li>
+<li><a href="#optional">オプショナル optional</a><ul>
+<li><a href="#_36">オプショナル型の書式</a></li>
+<li><a href="#unwrap-1-force-unwrap">unwrapする (その1 Force Unwrap)</a></li>
+<li><a href="#unwrap2-optional-chaining">unwrapする（その２ Optional Chaining）</a></li>
+<li><a href="#unwrap-3">unwrapする (その３)</a></li>
+<li><a href="#nil-if-let">nil判定 if let</a></li>
+</ul>
+</li>
+<li><a href="#console">console</a><ul>
+<li><a href="#swift">swiftのコンソールプログラム作成</a></li>
+<li><a href="#scanf">scanf</a></li>
+</ul>
+</li>
+<li><a href="#enum">列挙方 enum</a><ul>
+<li><a href="#_37">基本</a></li>
+<li><a href="#_38">型を指定</a></li>
+<li><a href="#_39">メソッドを定義</a></li>
+<li><a href="#_40">参照</a></li>
+</ul>
+</li>
+<li><a href="#struct">構造体 struct</a></li>
+<li><a href="#protocol">プロトコル protocol</a><ul>
+<li><a href="#_41">プロトコルの宣言</a></li>
+<li><a href="#_42">プロトコルの実装</a></li>
+<li><a href="#subscript">subscript 配列にアクセスするための定義</a></li>
+</ul>
+</li>
+<li><a href="#exception">例外処理 exception</a></li>
+<li><a href="#others">その他 others</a><ul>
+<li><a href="#generics">ジェネリクス generics</a></li>
+<li><a href="#singleton">シングルトン singleton</a></li>
+<li><a href="#overload">演算子のオーバーロード overload</a></li>
+<li><a href="#typealias">タイプエイリアス typealias</a></li>
+<li><a href="#_43">ネストした型</a></li>
+</ul>
+</li>
+<li><a href="#technique">テクニック technique</a><ul>
+<li><a href="#swift_1">swiftでプリプロセッサを使用する</a></li>
+</ul>
+</li>
+<li><a href="#objective-c">Objective-Cの移植</a><ul>
+<li><a href="#nsclass">NSClass</a></li>
+<li><a href="#arrayswiftnsarrayobjective-c">Array(swift)とNSArray(Objective-C)の違い</a><ul>
+<li><a href="#_44">参照渡しか値渡しか</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Swiftも基本的なプログラムの構造はCocoaライブラリを使用しているのでObjective-Cと大きく変わらない。</p>
+<h1 id="web">学習webページ</h1>
+<p><a href="http://qiita.com/HirofumiYashima/items/03bf6b76d7fa9269c6cd">Webブラウザ上でSwiftのプログラムが確認できる</a></p>
+<h1 id="basic">基本仕様 basic</h1>
+<ul>
+<li>文の最後に;をつける必要がない。</li>
+<li>メソッドの宣言がない代わりに呼び出しより先にメソッドの本体を置く。</li>
+<li>自分で作成したプロジェクト内のswiftクラスはimportの記述は必要ない</li>
+<li>ヘッダーは必要ない。クラスの定義(Objective-Cのinterface)も必要ない</li>
+<li>プロパティは基本strong, weakにしたかったら weakを付ける</li>
+</ul>
+<h1 id="swift-coding">Swiftコーディング規約 coding</h1>
+<p><!-- coding:: -->
+<a href="http://qiita.com/susieyy/items/f71435cc962e70d81b37">Swiftコーディング規約@Wantedly</a></p>
+<h2 id="_1">命名規則</h2>
+<!-- naming -->
+
+<div class="codehilite"><pre><span class="c1">// 変数、関数 ハンガリアン記法</span>
+<span class="kd">let</span> <span class="nv">flag</span> <span class="p">=</span> <span class="kc">true</span>   <span class="c1">// 先頭は小文字</span>
+<span class="kd">let</span> <span class="nv">gameStageFlag</span> <span class="p">=</span> <span class="kc">true</span>  <span class="c1">// 単語の先頭は大文字</span>
+
+<span class="c1">// 関数 </span>
+<span class="kd">func</span> <span class="nf">goHoge</span><span class="p">()</span> <span class="p">{}</span>
+<span class="c1">// 第一引数の名前を関数名にふくめる (~FromString)</span>
+<span class="kd">func</span> <span class="nf">goHogeFromString</span><span class="p">(</span><span class="n">hoge</span> <span class="p">:</span> <span class="nb">String</span><span class="p">){}</span>
+</pre></div>
+
+
+<h3 id="_2">初期値を代入する場合は変数の型名をつけない</h3>
+<div class="codehilite"><pre><span class="c1">// ◯</span>
+<span class="kd">let</span> <span class="nv">text</span> <span class="p">=</span> <span class="s">&quot;Hoge Fuga&quot;</span>
+
+<span class="c1">// ☓</span>
+<span class="kd">let</span> <span class="nv">text</span><span class="p">:</span> <span class="nb">String</span> <span class="p">=</span> <span class="s">&quot;Hoge Fuga&quot;</span>
+
+<span class="c1">// 型が曖昧な場合は記述する</span>
+<span class="c1">// ◯ Int / UInt / NSInteger / NSUInteger の区別がつかないので明記する</span>
+<span class="kd">let</span> <span class="nv">i</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">0</span>
+
+<span class="c1">// ◯ Float / CGFloat / Double の区別がつかないので明記する</span>
+<span class="kd">let</span> <span class="nv">p</span><span class="p">:</span> <span class="nb">Float</span> <span class="p">=</span> <span class="mf">3.14</span>
+</pre></div>
+
+
+<h3 id="_3">配列の初期化</h3>
+<p>第一引数は可読性を考慮して、必要であれば外部引数名を利用する。</p>
+<div class="codehilite"><pre><span class="c1">// 配列</span>
+<span class="c1">// ◯</span>
+<span class="kd">var</span> <span class="nv">elements</span> <span class="p">=</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]()</span>
+<span class="c1">// ☓</span>
+<span class="kd">var</span> <span class="nv">elements</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span>
+</pre></div>
+
+
+<h3 id="_4">関数</h3>
+<div class="codehilite"><pre><span class="err">第一引数は可読性を考慮して、必要であれば外部引数名を利用する。</span>
+<span class="c1">// ◯</span>
+<span class="kd">func</span> <span class="nf">dateFromString</span><span class="p">(</span><span class="n">dateString</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="bp">NSDate</span>
+<span class="n">dateFromString</span><span class="p">(</span><span class="s">&quot;2014-03-14&quot;</span><span class="p">)</span> <span class="c1">// 引数がStringを取ることが関数から類推できる</span>
+</pre></div>
+
+
+<h1 id="print">文字列表示 print</h1>
+<p><!-- print:: -->
+  ・printを実行したメソッド名、行番号を出力
+      print(<strong>FUNCTION</strong>, <strong>LINE</strong>)
+      使用できるリテラルは</p>
+<div class="codehilite"><pre>__COLUMN__
+__FILE__
+__FUNCTION__
+__LINE__
+</pre></div>
+
+
+<div class="codehilite"><pre><span class="c1">// 改行しない</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;hoge&quot;</span><span class="p">,</span> <span class="n">terminator</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1">//変数を挿入する  (&quot;&quot; のなかに \(変数名))</span>
+<span class="kd">let</span> <span class="nv">str1</span><span class="p">:</span><span class="nb">String</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;str1: </span><span class="si">\(</span><span class="n">str1</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+
+<span class="c1">//式をカンマ区切りで渡す</span>
+<span class="kd">let</span> <span class="nv">hoge</span><span class="p">:</span><span class="nb">String</span> <span class="p">=</span> <span class="s">&quot;syutaro&quot;</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;aaa&quot;</span><span class="p">,</span> <span class="s">&quot;bbb&quot;</span><span class="p">,</span> <span class="n">hoge</span><span class="p">)</span>
+
+<span class="c1">//文字列以外のクラスをdescriptionを使用して出力</span>
+<span class="kd">let</span> <span class="nv">bau</span> <span class="p">:</span> <span class="n">Enemy</span> <span class="p">=</span> <span class="n">Enemy</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;hello:&quot;</span> <span class="o">+</span> <span class="n">bau</span><span class="p">.</span><span class="n">description</span><span class="p">)</span>
+</pre></div>
+
+
+<h1 id="basic_1">基本(basic)</h1>
+<!-- basis::  -->
+
+<h2 id="_5">コメント</h2>
+<!-- comment: -->
+
+<div class="codehilite"><pre><span class="c1">//一行コメント</span>
+<span class="cm">/* </span>
+<span class="cm">  複数行コメント</span>
+<span class="cm"> */</span>
+</pre></div>
+
+
+<ul>
+<li>行の終わりに;(セミコロン)は不要</li>
+<li>ヘッダーのインポートは不要（というかヘッダーファイルがない）
+      ただし、swiftのコードをobjective-cに取り込む場合はimportが必要
+        http://qiita.com/a_yasui/items/816abdb8acedfcc647fc </li>
+<li>pragma mark の記述方法が変わった<br>
+      // MARK: &lt;-ここに説明</li>
+<li>プリプロセッサは #if #elseif #endif しか使えない</li>
+</ul>
+<h1 id="variable">変数 variable</h1>
+<p><!-- variable:: var:: let:: -->
+  変数は var で宣言、定数は let で宣言する</p>
+<h2 id="_6">型</h2>
+<div class="codehilite"><pre>Bool     2値型。trueまたはfalseどちらかの値をとる
+Int8    -128〜127 の整数
+Int16   -32,768〜32,767 の整数
+Int32   -2,147,483,648〜2,147,483,647 の整数
+Int64   -9,223,372,036,854,775,808〜9,223,372,036,854,775,807 の整数
+Int     32ビット環境ではInt32、64ビット環境ではInt64と同じ範囲の整数値をとる
+Float   32ビット浮動小数点。Doubleほどの精度を必要としない場合に使用する
+Double  64ビット浮動小数点。小数点を扱う場合は主にこちらを使用する
+String  Unicode文字を連ねた文字列を格納する可変長文字列型
+Character Unicode文字を１文字格納する文字型
+Array〈T〉  Genericsとして定義されているため T の型で縛られる
+Array〈Any〉  配列内に複数の型が混在する複合型配列
+Dictionary〈T, S〉  T 型のキーと S 型の値を持つ連想配列
+</pre></div>
+
+
+<h2 id="_7">変数宣言</h2>
+<!-- variable declaration:: -->
+
+<div class="codehilite"><pre><span class="c1">// var 変数名:型 = 値</span>
+<span class="kd">var</span> <span class="nv">hogehoge</span><span class="p">:</span><span class="nb">String</span> <span class="p">=</span> <span class="s">&quot;ほげほげ&quot;</span>
+
+<span class="c1">// 初期値なしのインスタンス変数はオプショナルにする</span>
+<span class="kd">var</span> <span class="nv">hoge</span><span class="p">:</span><span class="nb">String</span><span class="p">?</span>
+
+<span class="c1">// 一行に複数の宣言をまとめて書く場合は , でつなげる</span>
+<span class="kd">var</span> <span class="nv">posX</span> <span class="p">:</span> <span class="nb">Float</span><span class="p">,</span> <span class="n">posY</span> <span class="p">:</span> <span class="nb">Float</span>
+
+<span class="c1">//型を省略すると自動で推測してくれる。</span>
+<span class="kd">var</span> <span class="nv">hoge</span> <span class="p">=</span> <span class="s">&quot;ほげほげ&quot;</span>   <span class="c1">// &lt;- OK</span>
+<span class="kd">var</span> <span class="nv">hoge2</span> <span class="p">=</span> <span class="mi">100</span>        <span class="c1">// &lt;- OK</span>
+
+<span class="c1">//代入</span>
+<span class="c1">// 変数 = 値</span>
+<span class="kd">var</span> <span class="nv">hoge</span><span class="p">:</span><span class="n">int</span> <span class="p">=</span> <span class="mi">100</span>
+<span class="n">hoge</span> <span class="p">=</span> <span class="mi">200</span>
+
+<span class="c1">//定数  const value::</span>
+<span class="c1">// let 変数名:型 = 値</span>
+<span class="kd">let</span> <span class="nv">hoge</span><span class="p">:</span><span class="nb">String</span> <span class="p">=</span> <span class="s">&quot;ほげ&quot;</span>
+<span class="n">hoge</span> <span class="p">=</span> <span class="s">&quot;はげ&quot;</span>         <span class="c1">// &lt;- 定数は変更できないエラー発生</span>
+</pre></div>
+
+
+<h1 id="if-if">if文 if</h1>
+<p><!-- if::  -->
+  Objective-Cとほぼ一緒。違うのは条件文を()で囲まない、
+  処理の部分は必ず{} で囲む必要がある</p>
+<div class="codehilite"><pre>  <span class="k">if</span> <span class="n">a</span> <span class="p">==</span> <span class="n">b</span> <span class="p">{</span>
+    <span class="c1">// 条件が成立した時の処理</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span> <span class="p">{</span>
+    <span class="c1">// 最初の条件が成立せずに2つめの条件が成立した時の処理</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// 条件が成立しなかった時の処理</span>
+  <span class="p">}</span>
+</pre></div>
+
+
+<div class="codehilite"><pre>条件式
+  swiftでは代入式は値を返さないので 
+    if a = b {
+    }
+  はエラー( type &#39;()&#39; does not conform to protocol &#39;Boolean Type&#39;) になる。
+  if文の条件式には必ずBoolean型の値を与えてやらないとダメみたい。
+  以下もだめ
+  var a:Int = 1
+  if a {
+
+  }
+</pre></div>
+
+
+<h1 id="for-for">for文 for</h1>
+<p>繰り返し処理を行いたいときに使用する。</p>
+<!-- for:: -->
+
+<div class="codehilite"><pre><span class="c1">// 基本</span>
+<span class="c1">//C言語のforループ(非推奨)</span>
+<span class="k">for</span> <span class="kd">var</span> <span class="nv">cnt</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">cnt</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">cnt</span><span class="o">++</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;cnt:</span><span class="si">\(</span><span class="n">cnt</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">//範囲指定 (tupleを使用)</span>
+<span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="mi">5</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">\(</span><span class="n">index</span><span class="si">)</span><span class="s"> times 5 is </span><span class="si">\(</span><span class="n">index</span> <span class="o">*</span> <span class="mi">5</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="mi">0</span> <span class="p">..</span><span class="o">&lt;</span> <span class="mi">10</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">\(</span><span class="n">index</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">//高速列挙 (要素数を繰り返す)</span>
+<span class="kd">let</span> <span class="nv">names</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Anna&quot;</span><span class="p">,</span> <span class="s">&quot;Alex&quot;</span><span class="p">,</span> <span class="s">&quot;Brian&quot;</span><span class="p">,</span> <span class="s">&quot;Jack&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">name</span> <span class="k">in</span> <span class="n">names</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hello, </span><span class="si">\(</span><span class="n">name</span><span class="si">)</span><span class="s">!&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">//index省略</span>
+<span class="k">for</span> <span class="kc">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="mi">3</span> <span class="p">{</span>
+    <span class="c1">// 何らかの処理を3回実施します</span>
+<span class="p">}</span>
+
+<span class="c1">//インデックスを参照する enumerate::</span>
+<span class="kd">let</span> <span class="nv">array</span> <span class="p">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">50</span><span class="p">]</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="n">array</span><span class="p">.</span><span class="bp">enumerate</span><span class="p">()</span> <span class="p">{</span>
+  <span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">\(</span><span class="n">index</span><span class="si">)</span><span class="s"> : </span><span class="si">\(</span><span class="n">value</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">//多重ループを一気に抜ける</span>
+<span class="n">for_i</span><span class="p">:</span> <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="mi">5</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="mi">5</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;i=</span><span class="si">\(</span><span class="n">i</span><span class="si">)</span><span class="s"> j=</span><span class="si">\(</span><span class="n">j</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="p">==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="p">==</span> <span class="mi">2</span> <span class="p">{</span>
+            <span class="bp">print</span><span class="p">(</span><span class="s">&quot;break for_i&quot;</span><span class="p">)</span>
+            <span class="k">break</span> <span class="n">for_i</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="switchcase">switch~case</h1>
+<p><!-- switch:: -->
+  swiftのswitch文の特徴</p>
+<ul>
+<li>case に複数の値を設定できる<br>
+  　例: case 1,2,3:  </li>
+<li>breakいらない。</li>
+<li>breakせずに次のcaseに進みたい場合は fallthrough を使用する</li>
+<li>文字列もswitchできる</li>
+</ul>
+<div class="codehilite"><pre><span class="c1">// 基本</span>
+  <span class="k">switch</span> <span class="n">hoge</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;1だよ&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">:</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;2か3だよ&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="mf">4.</span><span class="p">..</span><span class="mi">10</span><span class="p">:</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;4から10だよ&quot;</span><span class="p">)</span>
+    <span class="k">default</span><span class="p">:</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;それ以外だよ&quot;</span><span class="p">)</span>
+  <span class="p">}</span>
+
+<span class="c1">// 文字列</span>
+  <span class="k">switch</span> <span class="n">hoges</span><span class="p">{</span>
+    <span class="k">case</span> <span class="s">&quot;banana&quot;</span><span class="p">:</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;ばなな&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="s">&quot;tomato&quot;</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;とまと&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="s">&quot;cucumber&quot;</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;きゅうり&quot;</span><span class="p">)</span>
+  <span class="p">}</span>
+
+<span class="c1">// break、fallthrough</span>
+  <span class="k">switch</span> <span class="n">hoge</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">)</span>
+      <span class="k">fallthrough</span>
+    <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;2&quot;</span><span class="p">)</span>
+      <span class="k">break</span>
+    <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;3&quot;</span><span class="p">)</span>
+  <span class="p">}</span>
+
+<span class="c1">// 範囲を指定する</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">csae</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;zero&quot;</span><span class="p">)</span>
+  <span class="k">case</span> <span class="mf">1.</span><span class="p">.&lt;</span><span class="mi">10</span><span class="p">:</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;number of 1&quot;</span><span class="p">)</span>
+  <span class="k">case</span> <span class="mf">10.</span><span class="p">.&lt;</span><span class="mi">100</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;number of 2&quot;</span><span class="p">)</span>
+  <span class="n">csae</span> <span class="mf">100.</span><span class="p">.&lt;</span><span class="mi">1000</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;number of 3&quot;</span><span class="p">)</span>
+  <span class="k">default</span><span class="p">:</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;more than 1000&quot;</span><span class="p">)</span>
+  <span class="p">}</span>
+
+<span class="c1">// 範囲を指定する (where)</span>
+  <span class="k">switch</span> <span class="bp">abs</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">// absは絶対値を返す関数</span>
+  <span class="k">case</span> <span class="kd">let</span> <span class="nv">n</span> <span class="k">where</span> <span class="n">n</span> <span class="p">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;ゼロ&quot;</span><span class="p">)</span>
+  <span class="k">case</span> <span class="kd">let</span> <span class="nv">n</span> <span class="k">where</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;1桁&quot;</span><span class="p">)</span>
+  <span class="k">case</span> <span class="kd">let</span> <span class="nv">n</span> <span class="k">where</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;2桁&quot;</span><span class="p">)</span>
+  <span class="k">case</span> <span class="kd">let</span> <span class="nv">n</span> <span class="k">where</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">:</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;3桁&quot;</span><span class="p">)</span>
+  <span class="k">default</span><span class="p">:</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;4桁以上&quot;</span><span class="p">)</span>
+  <span class="p">}</span>
+</pre></div>
+
+
+<h1 id="string">文字列 string</h1>
+<!-- string:: str::-->
+
+<h2 id="_8">基本</h2>
+<div class="codehilite"><pre><span class="c1">//文字列の結合</span>
+<span class="kd">var</span> <span class="nv">hoge1</span> <span class="p">=</span> <span class="s">&quot;ほげほげ&quot;</span>
+<span class="kd">var</span> <span class="nv">hoge2</span> <span class="p">=</span> <span class="n">hoge1</span> <span class="o">+</span> <span class="s">&quot;はげはげ&quot;</span>    <span class="c1">// &lt;- hoge2は&quot;ほげほげはげはげ&quot;</span>
+<span class="kd">var</span> <span class="nv">hoge3</span> <span class="p">=</span> <span class="s">&quot;いえい&quot;</span>
+<span class="n">hoge3</span> <span class="o">+=</span> <span class="s">&quot;あいむはっぴ&quot;</span>           <span class="c1">// &lt;- hoge3は&quot;いえいあいむはっぴ&quot;</span>
+
+<span class="c1">//変換</span>
+<span class="err">数値</span> <span class="p">-&gt;</span> <span class="err">文字列</span>
+  <span class="kd">let</span> <span class="nv">str</span>  <span class="p">=</span> <span class="n">num</span><span class="p">.</span><span class="n">description</span> <span class="c1">// &quot;-1.23&quot;</span>
+<span class="c1">//文字列 -&gt; 数値</span>
+  <span class="kd">let</span> <span class="nv">str</span> <span class="p">=</span> <span class="s">&quot;123&quot;</span>
+  <span class="kd">let</span> <span class="nv">intFromStr</span>   <span class="p">=</span> <span class="n">str</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span><span class="o">!</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1">// 124</span>
+  <span class="kd">let</span> <span class="nv">intFromOpStr</span> <span class="p">=</span> <span class="n">str</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span>       <span class="c1">// Optional(123)</span>
+
+<span class="c1">//フォーマット指定</span>
+  <span class="kd">let</span> <span class="nv">x</span> <span class="p">=</span> <span class="mf">100.123</span>
+  <span class="kd">let</span> <span class="nv">y</span> <span class="p">=</span> <span class="mf">200.123</span>
+  <span class="kd">let</span> <span class="nv">str</span> <span class="p">=</span> <span class="nb">String</span><span class="p">(</span><span class="n">format</span><span class="p">:</span> <span class="s">&quot;%.4f %.4f&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1">// 文字列の長さ(count)</span>
+  <span class="n">str</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="bp">count</span>
+
+<span class="c1">// 分割(split)</span>
+<span class="c1">// 区切り文字を指定して文字列を分割する</span>
+  <span class="kd">let</span> <span class="nv">str</span> <span class="p">=</span> <span class="s">&quot;hoge,hage,mage&quot;</span>
+  <span class="kd">let</span> <span class="nv">array</span> <span class="p">=</span> <span class="n">str</span><span class="p">.</span><span class="n">componentsSeparatedByString</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+  <span class="c1">// array -&gt; [&quot;hoge&quot;, &quot;hage&quot;, &quot;mage&quot;]</span>
+
+<span class="c1">// 結合(join)</span>
+<span class="c1">// 区切り文字を指定して文字列の配列を結合する</span>
+  <span class="kd">let</span> <span class="nv">prefs</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;yamagata&quot;</span><span class="p">,</span> <span class="s">&quot;miyagi&quot;</span><span class="p">,</span> <span class="s">&quot;fukushima&quot;</span><span class="p">]</span>
+  <span class="kd">let</span> <span class="nv">str</span> <span class="p">=</span> <span class="bp">join</span><span class="p">(</span><span class="err">&#39;</span><span class="p">,</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">prefs</span><span class="p">)</span>
+  <span class="c1">// str -&gt; &quot;yamagata,miyagi,fukushima&quot;</span>
+</pre></div>
+
+
+<h2 id="_9">正規表現処理クラス</h2>
+<p>正規表現でマッチているかチェック、マッチした文字列を取得するには以下のクラスを使うと便利。</p>
+<div class="codehilite"><pre><span class="kd">class</span> <span class="nc">Regexp</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">internalRegexp</span><span class="p">:</span> <span class="bp">NSRegularExpression</span>
+    <span class="kd">let</span> <span class="nv">pattern</span><span class="p">:</span> <span class="nb">String</span>
+
+    <span class="kd">init</span><span class="p">(</span><span class="kc">_</span> <span class="n">pattern</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">pattern</span> <span class="p">=</span> <span class="n">pattern</span>
+        <span class="k">do</span> <span class="p">{</span>
+            <span class="kc">self</span><span class="p">.</span><span class="n">internalRegexp</span> <span class="p">=</span> <span class="n">try</span> <span class="bp">NSRegularExpression</span><span class="p">(</span><span class="n">pattern</span><span class="p">:</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="p">[.</span><span class="n">CaseInsensitive</span><span class="p">])</span>
+        <span class="p">}</span> <span class="n">catch</span> <span class="kd">let</span> <span class="nv">error</span> <span class="kc">as</span> <span class="bp">NSError</span> <span class="p">{</span>
+            <span class="bp">print</span><span class="p">(</span><span class="n">error</span><span class="p">.</span><span class="n">localizedDescription</span><span class="p">)</span>
+            <span class="kc">self</span><span class="p">.</span><span class="n">internalRegexp</span> <span class="p">=</span> <span class="bp">NSRegularExpression</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">isMatch</span><span class="p">(</span><span class="n">input</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">matches</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">internalRegexp</span><span class="p">.</span><span class="n">matchesInString</span><span class="p">(</span> <span class="n">input</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="p">[],</span> <span class="n">range</span><span class="p">:</span><span class="n">NSMakeRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">input</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="bp">count</span><span class="p">)</span> <span class="p">)</span>
+        <span class="k">return</span> <span class="n">matches</span><span class="p">.</span><span class="bp">count</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">matches</span><span class="p">(</span><span class="n">input</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="nb">String</span><span class="p">]?</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">nsInput</span> <span class="p">=</span> <span class="n">input</span> <span class="kc">as</span> <span class="bp">NSString</span>
+        <span class="k">if</span> <span class="kc">self</span><span class="p">.</span><span class="n">isMatch</span><span class="p">(</span><span class="n">input</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nv">results</span> <span class="p">=</span> <span class="p">[</span><span class="nb">String</span><span class="p">]()</span>
+            <span class="k">if</span> <span class="kd">let</span> <span class="nv">matches</span> <span class="p">=</span> <span class="n">internalRegexp</span><span class="p">.</span><span class="n">firstMatchInString</span><span class="p">(</span><span class="n">nsInput</span> <span class="kc">as</span> <span class="nb">String</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="n">NSMatchingOptions</span><span class="p">(),</span> <span class="n">range</span><span class="p">:</span> <span class="n">NSMakeRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">input</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="bp">count</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">..</span><span class="n">matches</span><span class="p">.</span><span class="n">numberOfRanges</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">{</span>
+                    <span class="n">results</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">nsInput</span><span class="p">.</span><span class="n">substringWithRange</span><span class="p">(</span><span class="n">matches</span><span class="p">.</span><span class="n">rangeAtIndex</span><span class="p">(</span><span class="n">i</span><span class="p">)))</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">results</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="kc">nil</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="is-as">is as</h1>
+<h3 id="as">as</h3>
+<p><!-- is -->
+型チェック<br>
+インスタンスに対してチェックを行い、True/Falseを返す<br>
+<code>[インスタンス] is [チェックしたいクラス]</code></p>
+<div class="codehilite"><pre><span class="kd">let</span> <span class="nv">array</span> <span class="p">:</span> <span class="p">[</span><span class="nb">Any</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;text&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s">&quot;30&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">obj</span> <span class="k">in</span> <span class="n">array</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">obj</span> <span class="kc">is</span> <span class="nb">Int</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">\(</span><span class="n">obj</span><span class="si">)</span><span class="s"> is Int&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="n">obj</span> <span class="kc">is</span> <span class="nb">String</span><span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">\(</span><span class="n">obj</span><span class="si">)</span><span class="s"> is String&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="is">is</h3>
+<!-- as -->
+
+<ul>
+<li>インスタンスをダウンキャストする</li>
+<li>数字=&gt;文字列のような変換をするものではない</li>
+<li>共通するベースクラスにアップキャストされたインスタンスをダウンキャストする場合に使用する</li>
+<li>as?とすると、変換が失敗した場合はnilを返すようにできる</li>
+<li>つけないと、失敗した場合ランタイムエラーになる</li>
+</ul>
+<div class="codehilite"><pre><span class="c1">// 強制的にダウンキャストする。失敗した場合はランタイムエラー</span>
+<span class="kd">let</span> <span class="p">[</span><span class="err">ダウンキャストされたインスタンス</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="err">インスタンス</span><span class="p">]</span> <span class="kc">as</span> <span class="p">[</span><span class="err">ダウンキャスト先のクラス</span><span class="p">]</span>
+<span class="c1">// ダウンキャスを試みて、失敗した場合はnilを返す</span>
+<span class="kd">let</span> <span class="p">[</span><span class="err">ダウンキャストされたインスタンス</span><span class="p">(</span><span class="err">失敗すれば</span><span class="n">nilが入る</span><span class="p">)]</span> <span class="p">=</span> <span class="p">[</span><span class="err">インスタンス</span><span class="p">]</span> <span class="kc">as</span><span class="p">?</span> <span class="p">[</span><span class="err">ダウンキャスト先のクラス</span><span class="p">]</span>
+
+<span class="c1">// Animalクラスとそれを継承したDog/Catクラスを用意する</span>
+<span class="kd">class</span> <span class="nc">Animal</span><span class="p">{</span>
+
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">Cat</span><span class="p">:</span> <span class="n">Animal</span><span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">say</span> <span class="p">=</span> <span class="s">&quot;nya-&quot;</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">Dog</span><span class="p">:</span> <span class="n">Animal</span><span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">say</span> <span class="p">=</span> <span class="s">&quot;wan wan&quot;</span>
+<span class="p">}</span>
+
+<span class="c1">// animalsの型はDogとCatの共通ベースクラスにアップキャストされたAnimal配列になる</span>
+<span class="c1">// let animals = [Dog(), Cat()] でも型推論で同じ動作になる</span>
+<span class="kd">let</span> <span class="nv">animals</span> <span class="p">:</span> <span class="n">Animal</span><span class="p">[]</span> <span class="p">=</span> <span class="p">[</span><span class="n">Dog</span><span class="p">(),</span> <span class="n">Cat</span><span class="p">()]</span>
+
+<span class="c1">// animalは配列animalsの要素なので、型はAnimalとして扱われる</span>
+<span class="k">for</span> <span class="n">animal</span> <span class="k">in</span> <span class="n">animals</span> <span class="p">{</span>
+    <span class="c1">// Animal型にアップキャストされているanimalをCatでダウンキャストするように試みる</span>
+    <span class="k">if</span> <span class="kd">let</span> <span class="nv">cat</span> <span class="p">=</span> <span class="n">animal</span> <span class="kc">as</span><span class="p">?</span> <span class="n">Cat</span> <span class="p">{</span>
+        <span class="c1">// ダウンキャストされてCatのインスタンスとして扱えるので、sayプロパティが使える</span>
+        <span class="bp">println</span><span class="p">(</span><span class="s">&quot;Cat say </span><span class="si">\(</span><span class="n">cat</span><span class="p">.</span><span class="n">say</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+
+    <span class="c1">// 同様にDogにダウンキャストを試みる</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="kd">let</span> <span class="nv">dog</span> <span class="p">=</span> <span class="n">animal</span> <span class="kc">as</span><span class="p">?</span> <span class="n">Dog</span> <span class="p">{</span>
+        <span class="bp">println</span><span class="p">(</span><span class="s">&quot;Dog say </span><span class="si">\(</span><span class="n">dog</span><span class="p">.</span><span class="n">say</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="array">配列 array</h1>
+<p><!-- array:: -->
+Swiftの配列は要素の型を指定した場合は全要素が同じ型、指定しない場合はいろいろな型の値を混合できる</p>
+<h2 id="_10">配列変数の宣言</h2>
+<div class="codehilite"><pre>  <span class="c1">// 宣言</span>
+  <span class="c1">//let array1 : [要素の型]   </span>
+  <span class="n">letだとimmutable</span><span class="p">,</span> <span class="n">varだとmutable</span>
+  <span class="kd">var</span> <span class="nv">array1</span> <span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span>    <span class="c1">// 要素がInt型の配列 (空)</span>
+  <span class="kd">var</span> <span class="nv">array2</span> <span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span> <span class="c1">// 要素がString型の配列 (空)</span>
+  <span class="kd">var</span> <span class="nv">array3</span> <span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>    <span class="c1">// 初期化</span>
+  <span class="kd">var</span> <span class="nv">array4</span> <span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="s">&quot;c&quot;</span><span class="p">,</span><span class="s">&quot;d&quot;</span><span class="p">,</span><span class="s">&quot;e&quot;</span><span class="p">]</span>   <span class="c1">// 初期化</span>
+  <span class="kd">var</span> <span class="nv">array5</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s">&quot;aaa&quot;</span><span class="p">]</span>    <span class="c1">// いろいろな型を混ぜてもOK (Objective-CのNSArrayと同じ)</span>
+  <span class="kd">var</span> <span class="nv">array6</span> <span class="p">:</span> <span class="nb">Array</span><span class="p">&lt;</span><span class="nb">Any</span><span class="p">&gt;</span> <span class="p">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="s">&quot;bbb&quot;</span><span class="p">]</span>    <span class="c1">// 混合型の型名は Array&lt;Any&gt;</span>
+  <span class="kd">var</span> <span class="nv">array7</span> <span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span>  <span class="c1">// 初期化したけど要素が0の配列</span>
+  <span class="kd">var</span> <span class="nv">array72</span> <span class="p">=</span> <span class="p">[</span><span class="nb">String</span><span class="p">]()</span>     <span class="c1">// 初期化済み0配列  こちらの書き方が推奨</span>
+  <span class="kd">var</span> <span class="nv">array8</span> <span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span>    <span class="c1">// 未初期化の配列(initで初期化しないとエラーになる)</span>
+
+  <span class="c1">// 未初期化の配列はinitで初期化する</span>
+  <span class="kd">init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">array8</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">]</span>
+  <span class="p">}</span>
+
+  <span class="c1">//多次元配列</span>
+  <span class="kd">let</span> <span class="nv">matrix</span><span class="p">:[[</span><span class="nb">String</span><span class="p">]]</span> <span class="p">=</span> <span class="p">[[</span><span class="s">&quot;hoge&quot;</span><span class="p">,</span><span class="s">&quot;fuga&quot;</span><span class="p">]</span> <span class="p">,[</span><span class="s">&quot;ohayo&quot;</span><span class="p">,</span><span class="s">&quot;hello&quot;</span><span class="p">]]</span>
+  <span class="bp">println</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span><span class="c1">//&quot;fuga&quot;</span>
+
+  <span class="c1">// 空の配列を宣言</span>
+  <span class="c1">// 全て文字列の空の配列を宣言</span>
+  <span class="kd">var</span> <span class="nv">empty</span><span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span>
+
+  <span class="c1">// 空の配列は初期化してから使用</span>
+  <span class="n">empty</span> <span class="p">=</span> <span class="nb">Array</span><span class="p">(</span><span class="bp">count</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+  <span class="n">empty</span> <span class="p">=</span> <span class="p">[]</span>
+
+  <span class="c1">// 空の配列に要素を追加していく</span>
+  <span class="kd">var</span> <span class="nv">array</span> <span class="p">=</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span>
+  <span class="n">array</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;hoge1&quot;</span><span class="p">)</span>
+  <span class="n">array</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;hoge2&quot;</span><span class="p">)</span>
+  <span class="n">array</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;hoge3&quot;</span><span class="p">)</span>
+
+  <span class="c1">// 指定の要素数で初期化 Array:count:repeatedValue</span>
+  <span class="kd">var</span> <span class="nv">array</span> <span class="p">=</span> <span class="nb">Array</span><span class="p">(</span><span class="bp">count</span> <span class="p">:</span> <span class="p">[</span><span class="err">要素数</span><span class="p">],</span> <span class="n">repeatedValue</span> <span class="p">:</span> <span class="p">[</span><span class="err">初期値</span><span class="p">])</span>
+</pre></div>
+
+
+<h2 id="_11">配列の参照 (配列名[インデックス])</h2>
+<div class="codehilite"><pre>  <span class="c1">// 各要素の参照は 配列名[インデックス]</span>
+  <span class="kd">let</span> <span class="nv">array1</span> <span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
+  <span class="bp">print</span><span class="p">(</span><span class="s">&quot;2:</span><span class="si">\(</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">)</span><span class="s"> </span><span class="si">\(</span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>    <span class="c1">// 2, 3 と出力される</span>
+
+  <span class="c1">// for ~ inで全要素にアクセス</span>
+  <span class="kd">let</span> <span class="nv">array2</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span> 
+  <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">array2</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="c1">// enumerate()を使ってインデックスと値を参照</span>
+  <span class="kd">let</span> <span class="nv">array3</span> <span class="p">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">50</span><span class="p">]</span>
+  <span class="n">array3</span><span class="p">.</span><span class="bp">enumerate</span><span class="p">().</span><span class="n">forEach</span> <span class="p">{</span> <span class="bp">print</span><span class="p">(</span><span class="s">&quot;index:</span><span class="si">\(</span><span class="nv">$0</span><span class="p">.</span><span class="mi">0</span><span class="si">)</span><span class="s"> value:</span><span class="si">\(</span><span class="nv">$0</span><span class="p">.</span><span class="mi">1</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)}</span>
+
+  <span class="c1">// 配列の内容を表示したい場合は forEach を使うと簡単</span>
+  <span class="kd">let</span> <span class="nv">array4</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+  <span class="n">array4</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span><span class="bp">print</span><span class="p">(</span><span class="nv">$0</span><span class="p">)}</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span> <span class="k">in</span> <span class="n">array3</span><span class="p">.</span><span class="bp">enumerate</span><span class="p">()</span> <span class="p">{</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;index:</span><span class="si">\(</span><span class="n">index</span><span class="si">)</span><span class="s">, score: </span><span class="si">\(</span><span class="n">score</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+      <span class="c1">// index:0, score: 10</span>
+      <span class="c1">// index:1, score: 20</span>
+      <span class="c1">// index:2, score: 30</span>
+      <span class="c1">// index:3, score: 40</span>
+      <span class="c1">// index:4, score: 50</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 混合型を参照する場合</span>
+  <span class="c1">// 混合型の配列から指定の方の値だけを抜き出す</span>
+  <span class="kd">var</span> <span class="nv">ks</span> <span class="p">:</span> <span class="p">[</span><span class="nb">AnyObject</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span>
+  <span class="kd">var</span> <span class="nv">ki</span> <span class="p">:</span> <span class="p">[</span><span class="nb">AnyObject</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span>
+  <span class="kd">var</span> <span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="nb">AnyObject</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;abc&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;def&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&quot;ghi&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+  <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">..</span><span class="o">&lt;</span> <span class="n">array</span><span class="p">.</span><span class="bp">count</span> <span class="p">{</span>
+      <span class="c1">// String</span>
+      <span class="k">if</span> <span class="kd">let</span> <span class="nv">string</span> <span class="p">=</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="kc">as</span><span class="p">?</span> <span class="nb">String</span> <span class="p">{</span>
+          <span class="n">ks</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+      <span class="p">}</span>
+      <span class="c1">// Int</span>
+      <span class="k">if</span> <span class="kd">let</span> <span class="nv">int1</span> <span class="p">=</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="kc">as</span><span class="p">?</span> <span class="nb">Int</span> <span class="p">{</span>
+          <span class="n">ki</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">int1</span><span class="p">)</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="bp">print</span><span class="p">(</span><span class="s">&quot;test3_1: </span><span class="si">\(</span><span class="n">ks</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+  <span class="bp">print</span><span class="p">(</span><span class="s">&quot;test3_1: </span><span class="si">\(</span><span class="n">ki</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<h2 id="_12">配列の操作</h2>
+<h3 id="append">要素の追加 (.append)</h3>
+<p>要素を１件だけ追加する</p>
+<div class="codehilite"><pre>var array1 : [Int] = [1,2,3,4,5]
+array1.append(6)
+</pre></div>
+
+
+<h3 id="_13">配列の追加 (+=[])</h3>
+<p>要素をまとめて追加する</p>
+<div class="codehilite"><pre>var array1 : [Int] = [1,2,3]
+array1 += [1,2,3]
+</pre></div>
+
+
+<h3 id="_14">要素の変更</h3>
+<div class="codehilite"><pre>var array1 : [Int] = [1,2,3]
+array1[0] = 10
+</pre></div>
+
+
+<h3 id="removeatindex">要素の削除 (removeAtIndex)</h3>
+<div class="codehilite"><pre>var array1 : [Int] = [1,2,3]
+array1.removeAtIndex(1)
+print(array1)     // 2,3
+</pre></div>
+
+
+<h3 id="repeatedvalue">repeatedValue 配列を指定の値で初期化する</h3>
+<div class="codehilite"><pre>var array1 : [AnyObject] = Array(count:10, &quot;hoge&quot;)
+print(array1)      // [hoge,hoge,hoge,hoge,hoge,hoge,hoge,hoge,hoge,hoge]
+</pre></div>
+
+
+<h2 id="_15">便利関数</h2>
+<h3 id="map">map</h3>
+<!-- map:: -->
+
+<p>mapは配列の全要素に処理を行い、新しい値を返すような場合に使用する。
+例: </p>
+<ul>
+<li>配列の要素を100倍した配列を返す</li>
+<li>配列の文字列を大文字に変換した配列を返す</li>
+</ul>
+<div class="codehilite"><pre><span class="c1">// 全要素を10倍した新しい配列を取得</span>
+<span class="kd">let</span> <span class="nv">array1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="kd">let</span> <span class="nv">newArray</span> <span class="p">=</span> <span class="n">array1</span><span class="p">.</span><span class="bp">map</span><span class="p">{</span> <span class="nv">$0</span> <span class="o">*</span> <span class="mi">10</span> <span class="p">}</span>
+<span class="n">newArray</span><span class="p">.</span><span class="n">forEach</span><span class="p">{</span> <span class="bp">print</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>  <span class="c1">// 10,20,30,40,50</span>
+</pre></div>
+
+
+<h3 id="filter">filter</h3>
+<p><!-- filter:: -->
+filterは配列の要素のうち条件に合致したものを残したい場合に使用する
+例: 配列に対して</p>
+<ul>
+<li>しきい値より大きい値のみ残す</li>
+<li>特定の書式の文字列のみ残す</li>
+</ul>
+<div class="codehilite"><pre><span class="c1">// 指定の値以上の値のみ残す</span>
+<span class="kd">let</span> <span class="nv">array1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
+<span class="kd">let</span> <span class="nv">array2</span> <span class="p">=</span> <span class="n">array1</span><span class="p">.</span><span class="bp">filter</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="p">}</span>
+<span class="n">array2</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="bp">print</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>  <span class="c1">// 6,7,8,9,10</span>
+</pre></div>
+
+
+<h3 id="sort">sort</h3>
+<p><!-- sort:: -->
+配列の要素の順番を並び替える。
+sortはソート後に新しい配列を返す。<br>
+sortInPlaceは元の配列をソート済みに変更する。  </p>
+<div class="codehilite"><pre><span class="c1">// sortInPlace</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;-- sortInPlace 1 --&quot;</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nv">arrayIP1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">55</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="kd">var</span> <span class="nv">arrayIP2</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;hoge&quot;</span><span class="p">,</span> <span class="s">&quot;abc&quot;</span><span class="p">,</span> <span class="s">&quot;123&quot;</span><span class="p">,</span> <span class="s">&quot;ddd&quot;</span><span class="p">,</span> <span class="s">&quot;a123&quot;</span><span class="p">]</span>
+
+<span class="n">arrayIP1</span><span class="p">.</span><span class="n">sortInPlace</span><span class="p">()</span>
+<span class="n">arrayIP1</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="bp">print</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>
+
+<span class="n">arrayIP2</span><span class="p">.</span><span class="n">sortInPlace</span><span class="p">()</span>
+<span class="n">arrayIP2</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="bp">print</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>
+
+<span class="c1">// 昇順</span>
+<span class="n">arrayIP1</span><span class="p">.</span><span class="n">sortInPlace</span><span class="p">(</span><span class="o">&lt;</span><span class="p">)</span>
+<span class="n">arrayIP1</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="bp">print</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>
+
+<span class="c1">// 降順</span>
+<span class="n">arrayIP1</span><span class="p">.</span><span class="n">sortInPlace</span><span class="p">(</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="n">arrayIP1</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="bp">print</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>
+
+<span class="c1">// sort</span>
+<span class="kd">let</span> <span class="nv">array1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">55</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="kd">let</span> <span class="nv">array2</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;hoge&quot;</span><span class="p">,</span> <span class="s">&quot;abc&quot;</span><span class="p">,</span> <span class="s">&quot;123&quot;</span><span class="p">,</span> <span class="s">&quot;ddd&quot;</span><span class="p">,</span> <span class="s">&quot;a123&quot;</span><span class="p">]</span>
+
+<span class="c1">// sortで並べ替え(整数)</span>
+<span class="n">array1</span><span class="p">.</span><span class="bp">sort</span><span class="p">().</span><span class="n">forEach</span> <span class="p">{</span> <span class="bp">print</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>
+
+<span class="c1">// sortで並べ替え(文字列)</span>
+<span class="n">array2</span><span class="p">.</span><span class="bp">sort</span><span class="p">().</span><span class="n">forEach</span> <span class="p">{</span> <span class="bp">print</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>
+
+<span class="c1">// 昇順(小さい順)に並び替え</span>
+<span class="c1">//let newArray = array1.sort {$0 &lt; $1}</span>
+<span class="kd">let</span> <span class="nv">newArray</span> <span class="p">=</span> <span class="n">array1</span><span class="p">.</span><span class="bp">sort</span><span class="p">(</span><span class="o">&lt;</span><span class="p">)</span>
+<span class="n">newArray</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span><span class="bp">print</span><span class="p">(</span><span class="nv">$0</span><span class="p">)}</span>
+
+<span class="c1">// 降順(大きい順)に並び替え</span>
+<span class="c1">//let newArray2 = array1.sort {$0 &gt; $1}</span>
+<span class="kd">let</span> <span class="nv">newArray2</span> <span class="p">=</span> <span class="n">array1</span><span class="p">.</span><span class="bp">sort</span><span class="p">(</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="n">newArray2</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span><span class="bp">print</span><span class="p">(</span><span class="nv">$0</span><span class="p">)}</span>
+
+<span class="c1">// for文で使用する</span>
+<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">array1</span><span class="p">.</span><span class="bp">sort</span><span class="p">(</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="reverse">reverse</h3>
+<p>配列の並びを逆順にする</p>
+<div class="codehilite"><pre><span class="kd">let</span> <span class="nv">array1</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="s">&quot;hoge&quot;</span><span class="p">,</span> <span class="s">&quot;b3&quot;</span><span class="p">,</span> <span class="s">&quot;hage&quot;</span><span class="p">]</span>
+<span class="kd">let</span> <span class="nv">newArray</span> <span class="p">=</span> <span class="n">array1</span><span class="p">.</span><span class="bp">reverse</span><span class="p">()</span>
+<span class="n">newArray</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="bp">print</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>
+</pre></div>
+
+
+<h1 id="dictionary">辞書型配列 dictionary</h1>
+<!-- dictionary:: -->
+
+<div class="codehilite"><pre>  <span class="c1">// 変数の宣言 (nil) キーと値の型を指定できる</span>
+  <span class="kd">var</span> <span class="nv">d1</span> <span class="p">:</span> <span class="p">[</span><span class="nb">String</span> <span class="p">:</span> <span class="nb">Int</span><span class="p">]?</span> <span class="p">=</span> <span class="kc">nil</span>
+
+  <span class="c1">// 変数の宣言と初期値設定</span>
+  <span class="kd">var</span> <span class="nv">d12</span> <span class="p">:</span> <span class="p">[</span><span class="nb">String</span> <span class="p">:</span> <span class="nb">Int</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Apple&quot;</span> <span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s">&quot;Orange&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s">&quot;Banana&quot;</span> <span class="p">:</span> <span class="mi">50</span><span class="p">]</span>
+
+  <span class="c1">// 変数の宣言(型を指定しない)</span>
+  <span class="kd">var</span> <span class="nv">d13</span> <span class="p">:</span> <span class="p">[</span><span class="n">Strin</span> <span class="p">:</span> <span class="nb">Int</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Apple&quot;</span> <span class="p">:</span> <span class="mi">100</span><span class="p">]</span>
+
+  <span class="c1">// 代入</span>
+  <span class="n">d12</span><span class="p">[</span><span class="s">&quot;Pine&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">150</span>
+
+  <span class="c1">// 要素の削除</span>
+  <span class="n">d12</span><span class="p">[</span><span class="s">&quot;Apple&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="kc">nil</span>    <span class="c1">// nilを代入する</span>
+
+  <span class="c1">// キーのリスト取得</span>
+  <span class="n">d12</span><span class="p">.</span><span class="n">keys</span><span class="p">.</span><span class="n">array</span>
+
+  <span class="c1">// 値のリスト取得</span>
+  <span class="n">d12</span><span class="p">.</span><span class="n">values</span>
+
+  <span class="c1">// キーでループを回す</span>
+  <span class="kd">var</span> <span class="nv">d7</span> <span class="p">:</span> <span class="p">[</span><span class="nb">String</span> <span class="p">:</span> <span class="nb">Int</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Apple&quot;</span> <span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s">&quot;Orange&quot;</span> <span class="p">:</span> <span class="mi">150</span><span class="p">]</span>
+  <span class="k">for</span> <span class="n">key</span> <span class="k">in</span> <span class="n">d7</span><span class="p">.</span><span class="n">keys</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;d7 </span><span class="si">\(</span><span class="n">key</span><span class="si">)</span><span class="s">:</span><span class="si">\(</span><span class="n">d7</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="c1">// キーと値をループで回す</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="n">d7</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;d7 </span><span class="si">\(</span><span class="n">key</span><span class="si">)</span><span class="s">:</span><span class="si">\(</span><span class="n">value</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span><span class="n">s</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 要素数を取得 (count)</span>
+  <span class="n">d7</span><span class="p">.</span><span class="bp">count</span>
+</pre></div>
+
+
+<p>その他の重要な点<br>
+  ・Dictionary型を別の変数に代入すると、値のコピーが行われる（コピー元の値が保持される）</p>
+<h1 id="tuple">タプル tuple</h1>
+<p><!-- tople:: -->
+  配列とも辞書型とも違う<br>
+  配列でないので for in が使えない。辞書型ではないので参照に [キー] が使えない。
+  タプルで要素にアクセスするには <strong>タプル.要素名</strong> のように名前を指定する必要がある</p>
+<h3 id="_16">名前なしタプル</h3>
+<div class="codehilite"><pre>// 宣言
+let item = (&quot;ジュース&quot;, 100, 0.08, 108)
+
+// 参照は タプル変数名.配列の要素番号 のようにする
+print(&quot;商品名=\(item.0), 税抜き価格=\(item.1)円, 消費税=\(item.2 * 100)%, 税込み価格=\(item.3)円&quot;)
+// 商品名=ジュース, 税抜き価格=100円, 消費税=8.0%, 税込み価格=108円
+</pre></div>
+
+
+<h3 id="_17">複数の変数をまとめて宣言するタプル</h3>
+<div class="codehilite"><pre>// 宣言
+let (name, price, tax, priceWithTax) = (&quot;ジュース&quot;, 100, 0.08, 108)
+
+// 参照
+print(&quot;商品名=\(name), 税抜き価格=\(price)円, 消費税=\(tax * 100)%, 税込み価格=\(priceWithTax)円&quot;)
+</pre></div>
+
+
+<h3 id="_18">名前つきタプル ★</h3>
+<div class="codehilite"><pre>// 宣言
+let item = (name:&quot;ジュース&quot;, price:100, tax:0.08, priceWithTax:108)
+
+// 参照
+item.name
+item.price
+</pre></div>
+
+
+<h3 id="_19">関数の戻り値としてタプルを返す</h3>
+<div class="codehilite"><pre>func getTuple() -&gt; (name:String, age:Int) {
+  return (&quot;shutaro&quot;, 36)
+}
+
+let tuple1 = getTuple()
+tuple1.name
+tuple1.age
+</pre></div>
+
+
+<h1 id="function">関数 function</h1>
+<p><!-- function:: func:: -->
+    (Swiftまとめ - 関数 -)[http://qiita.com/merrill/items/2e143c0e3ecfb04243a2]</p>
+<h3 id="_20">基本</h3>
+<div class="codehilite"><pre>// 関数の宣言
+func 関数名(引数名1 : 引数型1, 引数名2 : 引数型2) -&gt; 戻り値型 {
+}
+</pre></div>
+
+
+<p>Swiftの関数の特徴</p>
+<ul>
+<li>引数に名前が設定できる</li>
+<li>引数に初期値を設定できる</li>
+<li>引数の名前が異なれば、同じ名前のメソッドを宣言できる</li>
+<li>戻り値を複数返せる（タプル（リスト））</li>
+<li>外部引数を使用してObjective-Cみたいに呼び出し側でパラメータの名前を指定できる</li>
+</ul>
+<h3 id="_21">関数のサンプル</h3>
+<div class="codehilite"><pre><span class="c1">//①引数なし・戻り値なし</span>
+<span class="kd">func</span> <span class="nf">hello</span><span class="p">(){</span>
+  <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hello!&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">//②引数なし・戻り値あり</span>
+<span class="kd">func</span> <span class="nf">hoge</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">{</span>
+  <span class="k">return</span> <span class="mi">100</span>
+<span class="p">}</span>
+
+<span class="c1">//③引数あり・戻り値あり</span>
+<span class="kd">func</span> <span class="nf">hoge</span><span class="p">(</span><span class="n">num</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">{</span>
+  <span class="k">return</span> <span class="n">num</span>
+<span class="p">}</span>
+
+<span class="n">hoge</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1">//④引数あり（複数）</span>
+<span class="kd">func</span> <span class="nf">hoge</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">String</span><span class="p">){</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">hoge</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s">&quot;テスト&quot;</span><span class="p">)</span>
+
+<span class="c1">//⑤引数あり（複数かつ数を指定しない）</span>
+<span class="c1">//引数の値は配列として格納される。</span>
+<span class="kd">func</span> <span class="nf">hoge</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">...){</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="p">}</span>
+<span class="n">hoge</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+<span class="c1">//⑥引数あり（初期値を設定）</span>
+<span class="kd">func</span> <span class="nf">hoge</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">100</span><span class="p">){</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">hoge</span><span class="p">()</span> <span class="c1">// =&gt; 100</span>
+<span class="n">hoge</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="mi">200</span><span class="p">)</span> <span class="c1">// =&gt; 200 ※引数にデフォルト値を指定した場合は、引数のラベル名(ライブ引数名)が必要になる！</span>
+
+<span class="c1">//⑥引数を使って変数宣言</span>
+<span class="c1">//引数のパラメータは、通常定数(let)として扱われるので、値を代入することはできない。</span>
+<span class="kd">func</span> <span class="nf">hoge</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">){</span>
+  <span class="n">a</span> <span class="p">=</span> <span class="mi">200</span> <span class="c1">// エラー</span>
+<span class="p">}</span>
+<span class="n">hoge</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1">//ただし、引数でinout宣言をしてあげるとエラーにならない。</span>
+<span class="kd">func</span> <span class="nf">hoge</span><span class="p">(</span><span class="kr">inout</span> <span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">){</span>
+  <span class="n">a</span> <span class="p">=</span> <span class="mi">200</span> <span class="c1">// OK</span>
+<span class="p">}</span>
+<span class="n">hoge</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1">//⑦キーワード引数（外部引数）を使う</span>
+<span class="c1">//引数の変数名の前に#をつける。</span>
+<span class="kd">func</span> <span class="nf">hoge</span><span class="p">(#</span><span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="p">#</span><span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">){</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">format</span><span class="p">:</span> <span class="s">&quot;%d %d&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">hoge</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="c1">//あまりないと思うが、引数名とは別名で指定したい場合は、以下のように書ける(外部引数名)。</span>
+<span class="c1">//func 関数名(外部引数名 内部引数名 : 変数型)</span>
+<span class="kd">func</span> <span class="nf">hoge</span><span class="p">(</span><span class="n">num</span> <span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">){</span>
+ <span class="bp">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">hoge</span><span class="p">(</span><span class="n">num</span><span class="p">:</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1">//⑧戻り値が複数</span>
+<span class="c1">//タプルを使用する。</span>
+<span class="kd">func</span> <span class="nf">compareNumber</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="bp">min</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="bp">max</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">min</span> <span class="p">=</span> <span class="bp">minElement</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+    <span class="kd">var</span> <span class="nv">max</span> <span class="p">=</span> <span class="bp">maxElement</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="bp">min</span><span class="p">,</span> <span class="bp">max</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">compareNumber</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+<span class="n">result</span><span class="p">.</span><span class="bp">min</span> <span class="c1">// =&gt; 1</span>
+<span class="n">result</span><span class="p">.</span><span class="bp">max</span> <span class="c1">// =&gt; 10</span>
+</pre></div>
+
+
+<h3 id="_22">オーバーロード</h3>
+<p>引数の数や、外部引数の名前が異なれば、同じ名前の関数をたくさん定義できる。</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nf">hoge</span><span class="p">(){</span>
+  <span class="bp">print</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nf">hoge</span><span class="p">(#</span><span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">){</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nf">hoge</span><span class="p">(#</span><span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">){</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">hoge</span><span class="p">()</span> <span class="c1">// =&gt; 100</span>
+<span class="n">hoge</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="mi">200</span><span class="p">)</span> <span class="c1">// =&gt; 200</span>
+<span class="n">hoge</span><span class="p">(</span><span class="n">b</span><span class="p">:</span> <span class="mi">300</span><span class="p">)</span> <span class="c1">// =&gt; 300</span>
+</pre></div>
+
+
+<h3 id="_23">可変引数。可変引数は配列として関数に渡される</h3>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nf">containsCharacter</span><span class="p">(</span><span class="n">text</span><span class="p">:</span><span class="nb">String</span><span class="p">,</span> <span class="n">characters</span><span class="p">:</span><span class="nb">Character</span> <span class="p">...)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="n">ch</span> <span class="k">in</span> <span class="n">characters</span> <span class="p">{</span>
+      <span class="k">for</span> <span class="n">t</span> <span class="k">in</span> <span class="n">text</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="n">ch</span> <span class="p">==</span> <span class="n">t</span> <span class="p">{</span>
+              <span class="k">return</span> <span class="kc">true</span>
+          <span class="p">}</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="kc">false</span>
+<span class="p">}</span>
+<span class="n">containsCharacter</span><span class="p">(</span><span class="s">&quot;abcdefg&quot;</span><span class="p">,</span> <span class="n">characters</span><span class="p">:</span><span class="s">&quot;i&quot;</span><span class="p">)</span> <span class="c1">// false</span>
+<span class="n">containsCharacter</span><span class="p">(</span><span class="s">&quot;abcdefg&quot;</span><span class="p">,</span> <span class="n">characters</span><span class="p">:</span><span class="s">&quot;g&quot;</span><span class="p">,</span> <span class="s">&quot;h&quot;</span><span class="p">,</span> <span class="s">&quot;i&quot;</span><span class="p">)</span> <span class="c1">// true</span>
+</pre></div>
+
+
+<h1 id="class">クラス  class</h1>
+<!-- class:: -->
+
+<p>swiftのクラスの特徴</p>
+<ul>
+<li>init()はイニシャライザといってクラスの初期化時(インスタンス生成時)に呼ばれる。</li>
+<li>クラス変数は持てない（クラスメソッドは持てる）</li>
+<li>メンバ変数のゲッター、セッターを定義できる</li>
+<li>クラスのメソッド内でそのクラスのメンバ変数やメソッドのself.は省略可能</li>
+</ul>
+<h3 id="_24">クラスの宣言</h3>
+<div class="codehilite"><pre><span class="kd">class</span> <span class="err">クラス名</span><span class="p">{</span>
+  <span class="c1">// プロパティ</span>
+  <span class="c1">//var プロパティ名 : 型</span>
+  <span class="c1">//let プロパティ名 : 型</span>
+  <span class="c1">// ※プロパティ名は通常 _ をつける</span>
+  <span class="kd">var</span> <span class="nv">_name</span><span class="p">:</span><span class="nb">String</span> <span class="p">=</span> <span class="s">&quot;&quot;</span>
+  <span class="kd">var</span> <span class="nv">_number</span><span class="p">:</span><span class="nb">Int</span> <span class="p">=</span> <span class="mi">0</span>
+
+  <span class="c1">//メソッド</span>
+  <span class="kd">init</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">number</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">_name</span> <span class="p">=</span> <span class="n">name</span> <span class="c1">// 引数の変数名とクラスのプロパティを区別するため、selfをつける</span>
+    <span class="n">_number</span> <span class="p">=</span> <span class="n">number</span> <span class="c1">// 定数もinitの中なら設定できる</span>
+  <span class="p">}</span>
+
+  <span class="kd">func</span> <span class="nf">hello</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">&quot;hello, </span><span class="si">\(</span><span class="n">name</span><span class="si">)</span><span class="s">&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="_25">オブジェクトの生成</h3>
+<div class="codehilite"><pre>  <span class="c1">// var 変数名 : クラス名 = クラス名(引数名1 : 引数1, 引数名2 : 引数2)</span>
+  <span class="kd">var</span> <span class="nv">user</span><span class="p">:</span> <span class="n">User</span> <span class="p">=</span> <span class="n">User</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="s">&quot;taro&quot;</span><span class="p">,</span> <span class="n">number</span><span class="p">:</span> <span class="mi">100</span><span class="p">)</span>
+
+  <span class="c1">// オブジェクトメソッドの呼び出し</span>
+  <span class="n">user</span><span class="p">.</span><span class="n">hello</span><span class="p">()</span>
+</pre></div>
+
+
+<h3 id="_26">クラスの判定（あるクラスを継承しているかどうか）</h3>
+<div class="codehilite"><pre>  <span class="c1">// あるクラスを継承しているかを判定するには  as? を使用する</span>
+  <span class="k">if</span> <span class="kd">let</span> <span class="nv">sub1</span> <span class="p">=</span> <span class="n">object1</span> <span class="kc">as</span><span class="p">?</span> <span class="n">SubClass</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="c1">// もしくは is演算子を使用する</span>
+  <span class="k">if</span> <span class="n">sub1</span> <span class="kc">is</span> <span class="n">SubClass</span> <span class="p">{</span>
+
+  <span class="p">}</span>
+
+  <span class="c1">// クラスの判定（特定のクラスかどうか） Objective-cのisMemberOfClass:メソッドと同じ</span>
+  <span class="k">if</span> <span class="n">sub1</span><span class="p">.</span><span class="kc">dynamicType</span> <span class="p">===</span> <span class="n">SubClass</span><span class="p">.</span><span class="kc">self</span>
+
+  <span class="err">例</span> <span class="n">hoge</span><span class="p">.</span><span class="kc">dynamicType</span> <span class="p">==</span> <span class="n">HogeClass</span><span class="p">.</span><span class="kc">self</span>
+
+
+  <span class="c1">// 同一インスタンスの判定</span>
+  <span class="kd">var</span> <span class="nv">monsterA</span> <span class="p">=</span> <span class="n">Monster</span><span class="p">()</span>
+  <span class="n">monsterA</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="s">&quot;スライム&quot;</span>
+  <span class="kd">var</span> <span class="nv">monsterB</span> <span class="p">=</span> <span class="n">monsterA</span>
+
+  <span class="k">if</span> <span class="n">monsterA</span> <span class="p">===</span> <span class="n">monsterB</span> <span class="p">{</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;同じインスタンス&quot;</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="n">monsterA</span> <span class="o">!==</span> <span class="n">monsterB</span> <span class="p">{</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;同じインスタンスではない&quot;</span><span class="p">)</span>
+  <span class="p">}</span>
+</pre></div>
+
+
+<h3 id="_27">インスタンス変数からクラス名を取得</h3>
+<div class="codehilite"><pre><span class="n">NSStringFromClass</span><span class="p">(</span><span class="err">インスタンス</span><span class="p">.</span><span class="kc">dynamicType</span><span class="p">))</span>
+
+<span class="kd">var</span> <span class="nv">hoge</span> <span class="p">:</span> <span class="n">Hoge</span> <span class="p">=</span> <span class="n">Hoge</span><span class="p">(</span><span class="s">&quot;hahaha&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">NSStringFromClass</span><span class="p">(</span><span class="err">インスタンス</span><span class="p">.</span><span class="kc">dynamicType</span><span class="p">)))</span>  <span class="c1">// ファイル名.Hoge</span>
+</pre></div>
+
+
+<h3 id="_28">クラスメソッド</h3>
+<p>クラスメソッドはオブジェクトなしで呼び出せるメソッド。</p>
+<div class="codehilite"><pre><span class="kd">class</span> <span class="nc">SomeClass</span> <span class="p">{</span>
+    <span class="c1">// クラスメソッド</span>
+    <span class="kd">class</span> <span class="nc">func</span> <span class="n">someTypeMethod</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// type method implementation goes here</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// クラスメソッドの呼び出し</span>
+<span class="c1">// クラス名.クラスメソッド名()</span>
+<span class="n">SomeClass</span><span class="p">.</span><span class="n">someTypeMethod</span><span class="p">()</span>
+</pre></div>
+
+
+<h3 id="inherit">クラスの継承 inherit</h3>
+<p><!-- inherit:: -->
+swiftにはNSObjectのような基底クラスはないので、なにも継承しないクラスを作れる</p>
+<div class="codehilite"><pre><span class="kd">class</span> <span class="nc">Hoge</span> <span class="p">{</span>  <span class="c1">// &lt;-NSObjectのようなものは必要ない</span>
+  <span class="kd">init</span><span class="p">(){}</span>
+  <span class="kd">func</span> <span class="nf">hogehoge</span><span class="p">(){</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;hoge&quot;</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 継承するにはclassの右側に継承元のクラスを記述する</span>
+<span class="kd">class</span> <span class="nc">Child1</span> <span class="p">:</span> <span class="n">Parent1</span> <span class="p">{</span>
+  <span class="kd">func</span> <span class="nf">test1</span> <span class="p">{</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">hoge</span><span class="p">()</span>   <span class="c1">// 親クラスのメソッドを呼び出すことが可能</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="_29">メソッドのオーバーライド</h3>
+<p><!-- override:: -->
+継承先のクラスで継承元のメソッドをオーバーライドする場合は <strong>override</strong> をつける必要がある。</p>
+<div class="codehilite"><pre><span class="kd">class</span> <span class="nc">Hage</span> <span class="p">:</span> <span class="n">Hoge</span> <span class="p">{</span>
+  <span class="kr">override</span> <span class="kd">init</span><span class="p">(){}</span>
+  <span class="kr">override</span> <span class="kd">func</span> <span class="nf">hogehoge</span><span class="p">(){</span>    <span class="c1">// &lt;- メソッド名の前に&quot;override&quot;をつけるべし</span>
+    <span class="c1">// 親クラスの機能を呼び出したい場合は</span>
+    <span class="c1">// super.メソッド名()</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="final">オーバーライドを禁止する (final)</h3>
+<!-- final:: -->
+
+<div class="codehilite"><pre><span class="kd">class</span> <span class="nc">Hoge</span> <span class="p">{</span>
+  <span class="kr">final</span> <span class="n">hogehoge</span><span class="p">(){</span>    <span class="c1">// &lt;- finalをつけるとこのメソッドはオーバーライド禁止</span>
+    <span class="o">~</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">Hage</span> <span class="p">:</span> <span class="n">Hoge</span> <span class="p">{</span>
+  <span class="kr">override</span> <span class="kd">func</span> <span class="nf">hogehoge</span><span class="p">(){</span>  <span class="c1">// &lt;- オーバーライドできないのでエラーんなる</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="init-deinit">イニシャライザ init deinit</h3>
+<p><!-- init:: deinit:: -->
+  <strong>イニシャライザ</strong> インスタンスが生成されるときに呼ばれる初期化メソッド<br>
+<strong>デイニシャライザ</strong> インスタンスが破棄される前に呼ばれる後処理メソッド  </p>
+<h4 id="_30">イニシャライザとデイニシャライザ</h4>
+<div class="codehilite"><pre><span class="kd">class</span> <span class="nc">Hoge</span> <span class="p">{</span>
+  <span class="c1">// イニシャライザ</span>
+  <span class="kd">init</span><span class="p">(){</span>
+    <span class="c1">// 自動で呼ばれるYO</span>
+  <span class="p">}</span>
+
+  <span class="c1">// パラメータ付きのイニシャライザ</span>
+  <span class="kd">init</span><span class="p">(</span><span class="n">hoge</span><span class="p">:</span><span class="nb">Int</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span><span class="nb">String</span><span class="p">){</span>
+  <span class="p">}</span>
+
+  <span class="c1">// デイニシャライザ</span>
+  <span class="kd">deinit</span><span class="p">{</span>
+    <span class="c1">// 解放時に自動で呼ばれYO</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4 id="_31">指定イニシャライザ</h4>
+<p>指定イニシャライザはすべてのプロパティを初期化するイニシャライザのこと</p>
+<div class="codehilite"><pre><span class="kd">class</span> <span class="nc">Person</span><span class="p">{</span>
+  <span class="kd">var</span> <span class="nv">name</span> <span class="p">:</span> <span class="nb">String</span>
+  <span class="kd">var</span> <span class="nv">age</span> <span class="p">:</span> <span class="nb">Int</span>
+  <span class="kd">init</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="nb">String</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span><span class="nb">Int</span><span class="p">){</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="n">name</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">age</span> <span class="p">=</span> <span class="n">age</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4 id="_32">コンビニエンスイニシャライザ</h4>
+<p>指定イニシャライザと異なる引数のイニシャライザ。複数定義することも出来る</p>
+<div class="codehilite"><pre><span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nv">name</span> <span class="p">:</span> <span class="nb">String</span>
+  <span class="kd">var</span> <span class="nv">age</span> <span class="p">:</span> <span class="nb">Int</span>
+  <span class="kd">init</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="nb">String</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">// 引数はnameだけ</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="n">name</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">age</span> <span class="p">=</span> <span class="mi">0</span>
+  <span class="p">}</span>
+  <span class="kd">init</span><span class="p">(</span><span class="n">age</span><span class="p">:</span><span class="nb">Int</span><span class="p">){</span>        <span class="c1">//　引数はageだけ</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="s">&quot;&quot;</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">age</span> <span class="p">=</span> <span class="n">age</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="property">プロパティ (Property)</h3>
+<p><!-- Property:: -->
+クラスのプロパティには保持型プロパティ(Stored Property)と計算型プロパティ(Computed Property)の２種類がある。</p>
+<h4 id="stored-property">保持型プロパティ (Stored Property)</h4>
+<p>メンバ変数を定義してそれをアクセスする方法。</p>
+<div class="codehilite"><pre><span class="kd">class</span> <span class="nc">Hoge</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nv">name</span> <span class="p">:</span> <span class="nb">String</span>
+  <span class="kd">var</span> <span class="nv">age</span> <span class="p">:</span> <span class="nb">Int</span>
+  <span class="kd">init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="s">&quot;nanashi&quot;</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">age</span> <span class="p">=</span> <span class="mi">0</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nv">hoge</span> <span class="p">:</span> <span class="n">Hoge</span> <span class="p">=</span> <span class="n">Hoge</span><span class="p">()</span>
+<span class="c1">// 実態があるのでそのまま参照、変更できる</span>
+<span class="n">hoge</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="s">&quot;Momotaro&quot;</span>
+<span class="n">hoge</span><span class="p">.</span><span class="n">age</span> <span class="p">=</span> <span class="mi">100</span>
+</pre></div>
+
+
+<h4 id="computed-property">計算型プロパティ (Computed Property)</h4>
+<p>値を保持せずにゲッターセッターによって値を参照したり変更したりするプロパティ。ただ値を保持しないが計算元として参照する保持型プロパティは必要なので、関連する保持型プロパティは必要。</p>
+<div class="codehilite"><pre><span class="kd">class</span> <span class="nc">HogeC</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nv">_age</span> <span class="p">:</span> <span class="nb">Int</span>
+  <span class="kd">init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">_age</span> <span class="p">=</span> <span class="mi">0</span>
+  <span class="p">}</span>
+  <span class="c1">// 計算型プロパティ</span>
+  <span class="kd">var</span> <span class="nv">age</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="kr">get</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="kc">self</span><span class="p">.</span><span class="n">_age</span>
+    <span class="p">}</span>
+    <span class="kr">set</span><span class="p">(</span><span class="n">newAge</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kc">self</span><span class="p">.</span><span class="n">_age</span> <span class="p">=</span> <span class="n">newAge</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nv">hogeC</span> <span class="p">:</span> <span class="n">HogeC</span> <span class="p">=</span> <span class="n">HogeC</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">hogeC</span><span class="p">.</span><span class="n">age</span><span class="p">)</span>    <span class="c1">// ageのゲッターメソッド(get)が呼ばれる</span>
+<span class="n">hogeC</span><span class="p">.</span><span class="n">age</span> <span class="p">=</span> <span class="mi">100</span>     <span class="c1">// ageのセッターメソッド(set)が呼ばれる</span>
+</pre></div>
+
+
+<h4 id="gettersetter">ゲッターセッター  getter/setter</h4>
+<p>クラスの外部からプロパティを参照、代入された時に呼ばれるメソッドをゲッター、セッターとして定義することができる。<br>
+<strong>ゲッター</strong> 参照時に呼ばれるメソッド<br>
+<strong>セッター</strong> 代入時に呼ばれるメソッド<br>
+Objective-Cと異なり、メンバ変数と直接関連はないので自由に命名できる</p>
+<div class="codehilite"><pre>  <span class="c1">// メンバ変数は外から呼ばれるプロパティ名と区別しやすいように先頭に_をつける</span>
+  <span class="kd">var</span> <span class="nv">_hoge</span> <span class="p">:</span> <span class="nb">String</span> <span class="p">=</span> <span class="s">&quot;&quot;</span>
+  <span class="c1">// </span>
+  <span class="kd">var</span> <span class="nv">hoge</span><span class="p">:</span><span class="nb">String</span> <span class="p">{</span>
+    <span class="kr">get</span> <span class="p">{</span>           <span class="c1">// ゲッター</span>
+        <span class="k">return</span> <span class="n">_hoge</span>
+    <span class="p">}</span>
+    <span class="kr">set</span> <span class="p">(</span><span class="n">hoge</span><span class="p">)</span> <span class="p">{</span>    <span class="c1">// セッター</span>
+      <span class="n">_hoge</span> <span class="p">=</span> <span class="n">hoge</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</pre></div>
+
+
+<p>※ _hogeとhogeは直接的な関連はないので全く異なる名前でもOK。</p>
+<p>ゲッターだけの場合はスコープを省略できる</p>
+<div class="codehilite"><pre>    <span class="kd">var</span> <span class="nv">age</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="mi">100</span>
+    <span class="p">}</span>
+</pre></div>
+
+
+<h3 id="_33">値変更の監視</h3>
+<p>値が変更される前と後で指定のメソッドが呼ばれる。ただし、イニシャライザ内で変更される場合は呼ばれない。</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nv">age</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">0</span><span class="p">{</span>
+  <span class="c1">// 設定前に呼ばれる</span>
+  <span class="kr">willSet</span> <span class="p">{</span>
+    <span class="c1">// 新しい値は newValue で参照できる</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;willSet </span><span class="si">\(</span><span class="kc">self</span><span class="p">.</span><span class="n">age</span><span class="si">)</span><span class="s"> -&gt; </span><span class="si">\(</span><span class="n">newValue</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="c1">// 設定後に呼ばれる</span>
+  <span class="kr">didSet</span> <span class="p">{</span>
+    <span class="c1">// 古い値は oldvalue で参照できる</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;didSet </span><span class="si">\(</span><span class="n">oldValue</span><span class="si">)</span><span class="s"> -&gt; </span><span class="si">\(</span><span class="kc">self</span><span class="p">.</span><span class="n">age</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="_34">ゲッターセッターと値の監視を共存</h3>
+<div class="codehilite"><pre><span class="c1">// ここでプロパティの定義</span>
+<span class="kd">var</span> <span class="nv">_price</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">0</span><span class="p">{</span>
+  <span class="kr">willSet</span> <span class="p">{</span>
+
+  <span class="p">}</span>
+  <span class="kr">didSet</span> <span class="p">{</span>
+
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nv">price</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+  <span class="kr">get</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_price</span>
+  <span class="p">}</span>
+  <span class="kr">set</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">_price</span> <span class="p">=</span> <span class="n">value</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="cast">クラスのキャスト cast</h3>
+<p><!-- cast:: -->
+swiftのキャストは </p>
+<ul>
+<li>子クラスのインスタンスを親クラスにキャスト -&gt; OK</li>
+<li>親クラスのインスタンスを子クラスにキャスト -&gt; NG</li>
+<li>関係のないクラスにキャスト -&gt; NG</li>
+</ul>
+<p>キャスト時の動作
+  子クラスを親クラスにキャストした場合、キャストされた親クラス経由で子クラスでオーバーライドされたメソッドを呼んだ場合、
+  子クラスのメソッドが呼ばれる。</p>
+<div class="codehilite"><pre>  <span class="kd">class</span> <span class="nc">P1</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">goBack</span><span class="p">(){</span> <span class="bp">print</span><span class="p">(</span><span class="s">&quot;P1:goBack&quot;</span><span class="p">)</span> <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="kd">class</span> <span class="nc">C1</span> <span class="p">:</span> <span class="n">P1</span><span class="p">{</span>
+    <span class="kr">override</span> <span class="n">goBack</span><span class="p">(){</span> <span class="bp">print</span><span class="p">(</span><span class="s">&quot;C1:goBack&quot;</span><span class="p">)</span> <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="kd">var</span> <span class="nv">obj1</span> <span class="p">:</span> <span class="n">P1</span> <span class="p">=</span> <span class="n">C1</span><span class="p">()</span>  <span class="c1">// 子供のインスタンスを親クラスにキャスト</span>
+  <span class="n">obj1</span><span class="p">.</span><span class="n">goBack</span><span class="p">()</span>     <span class="c1">// C1:goBack  obj1の実態はP1のインターフェイスに限定されたP1のインスタンス</span>
+</pre></div>
+
+
+<h3 id="extension">エクステンション extension</h3>
+<p><!-- extension:: -->
+エクステンションは既存のクラス(標準クラスを含む)を拡張するための機能
+エクステンションの特徴
+  * 計算型プロパティと静的な計算型プロパティ（計算型の型プロパティ）を追加できる
+  * インスタンスメソッドと型メソッドを追加できる
+  * イニシャライザを追加できます。（追加できるのはコンビニエンスイニシャライザのみ）
+  * サブスクリプトを追加できる
+  * ネストした型を定義してそれを使うことができる
+  * 新たなプロトコルに適合させることができる</p>
+<p>エクステンションのファイル名は [拡張元のクラス]+[機能名].swift<br>
+    例: String+Regext.swift 
+  エクステンションを使う場合は、次の様に型名の前にextensionキーワードをつけます。</p>
+<div class="codehilite"><pre><span class="kd">extension</span> <span class="err">拡張元のクラス名</span> <span class="p">{</span>
+    <span class="c1">// 新たなメソッドの追加やプロトコルへの適応</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>エクステンションにより新たなプロトコルへ適応させる場合は、次の様に記述します。</p>
+<div class="codehilite"><pre><span class="kd">extension</span> <span class="nc">SomeType</span><span class="p">:</span> <span class="n">SomeProtocol</span><span class="p">,</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
+    <span class="c1">// プロトコルへ適応するためのメソッド</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4 id="_35">拡張例</h4>
+<div class="codehilite"><pre><span class="kd">extension</span> <span class="nc">Int</span> <span class="p">{</span>
+    <span class="c1">// 16進数</span>
+    <span class="kd">var</span> <span class="nv">hex</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">String</span><span class="p">(</span><span class="kc">self</span><span class="p">,</span> <span class="n">radix</span><span class="p">:</span> <span class="mi">16</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="c1">// 8進数</span>
+    <span class="kd">var</span> <span class="nv">oct</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">String</span><span class="p">(</span><span class="kc">self</span><span class="p">,</span> <span class="n">radix</span><span class="p">:</span> <span class="mi">8</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="c1">// 2進数</span>
+    <span class="kd">var</span> <span class="nv">bin</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">String</span><span class="p">(</span><span class="kc">self</span><span class="p">,</span> <span class="n">radix</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="c1">// メソッド</span>
+    <span class="kd">func</span> <span class="nf">multi100</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">self</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 呼び出し</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;hex:&quot;</span> <span class="o">+</span> <span class="mf">256.</span><span class="n">hex</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;oct:&quot;</span> <span class="o">+</span> <span class="mf">256.</span><span class="n">oct</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;bin:&quot;</span> <span class="o">+</span> <span class="mf">256.</span><span class="n">bin</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;hoge:&quot;</span> <span class="o">+</span> <span class="mf">256.</span><span class="n">hoge</span><span class="p">().</span><span class="n">description</span><span class="p">)</span>
+</pre></div>
+
+
+<h1 id="pragma">pragma</h1>
+<p><!-- pragma:: -->
+<code>pragma - mark</code> は swfitでは</p>
+<div class="codehilite"><pre><span class="c1">// </span><span class="cs">MARK:</span><span class="c1"> - ここに説明 </span>
+<span class="err">※</span><span class="n">MAKR</span> <span class="err">と</span> <span class="p">:</span> <span class="err">の間にスペースを入れないこと</span>
+</pre></div>
+
+
+<p>のように記述する</p>
+<h1 id="optional">オプショナル optional</h1>
+<p><!-- optional -->
+  <a href="http://qiita.com/cotrpepe/items/518c4476ca957a42f5f1">[Swift] Optional 型についてのまとめ Ver2</a></p>
+<p>通常の変数はnilを代入できない。nilを代入できるようにしたのがOptional型</p>
+<h3 id="_36">オプショナル型の書式</h3>
+<div class="codehilite"><pre><span class="c1">//Int 型</span>
+  <span class="kd">var</span> <span class="nv">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="c1">// Optional 型</span>
+  <span class="kd">var</span> <span class="nv">b</span><span class="p">:</span> <span class="nb">Int</span>  <span class="c1">// 非 optional 型</span>
+<span class="c1">//String 型</span>
+  <span class="kd">var</span> <span class="nv">a</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="c1">// Optional 型</span>
+  <span class="kd">var</span> <span class="nv">b</span><span class="p">:</span> <span class="nb">String</span>  <span class="c1">// 非 optional 型</span>
+
+  <span class="c1">//別の書き方</span>
+  <span class="n">T</span><span class="p">?</span> <span class="p">=</span> <span class="nb">Optional</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span>
+  <span class="kd">var</span> <span class="nv">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span>
+  <span class="kd">var</span> <span class="nv">b</span><span class="p">:</span> <span class="nb">Optional</span><span class="p">&lt;</span><span class="nb">Int</span><span class="p">&gt;</span> <span class="c1">// Int?　と同じ意味</span>
+
+  <span class="nb">Optional</span> <span class="err">型の初期値は</span> <span class="kc">nil</span>
+  <span class="kd">var</span> <span class="nv">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="c1">// Optional 型</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1">// -&gt; nil</span>
+
+  <span class="nb">Optional</span> <span class="err">型は、非</span> <span class="nb">Optional</span> <span class="err">型と同じようには扱えない</span>
+    <span class="kd">var</span> <span class="nv">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="mi">1</span>
+    <span class="bp">print</span><span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>    <span class="c1">// error bはInt? で 2はIntなので型の異なるクラスの演算ができない</span>
+</pre></div>
+
+
+<h3 id="unwrap-1-force-unwrap">unwrapする (その1 Force Unwrap)</h3>
+<p>optional型の変数を使用する場合は hoge!  のように変数名の後ろに!をつけてアンラップし使用できるようにする。</p>
+<div class="codehilite"><pre>    <span class="kd">var</span> <span class="nv">a</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="s">&quot;hoge&quot;</span>
+    <span class="bp">print</span><span class="p">(</span><span class="n">a</span><span class="p">!)</span>
+</pre></div>
+
+
+<h3 id="unwrap2-optional-chaining">unwrapする（その２ Optional Chaining）</h3>
+<p>!でアンラップすると変数がnilのときに実行時エラーが発生する。<br>
+?でアンラップすると変数がnilのときにエラーが発生せずにnilが返る<br>
+  →アンラップしたときにnilが受け取れない可能性がある場所で使用するとエラーになる。  </p>
+<div class="codehilite"><pre>  <span class="kd">var</span> <span class="nv">hoge</span> <span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="kc">nil</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">hoge</span><span class="p">?)</span>     <span class="c1">// これはエラー。printの引数はnilを受け取れない</span>
+  <span class="kd">var</span> <span class="nv">hoge2</span> <span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="n">hoge</span><span class="p">?.</span><span class="n">uppercaseStr</span>  <span class="c1">// これはOK</span>
+</pre></div>
+
+
+<h3 id="unwrap-3">unwrapする (その３)</h3>
+<p>?? でアンラップするとnilのときに返す値を別途設定できる</p>
+<div class="codehilite"><pre>    <span class="kd">var</span> <span class="nv">str</span> <span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
+    <span class="bp">print</span><span class="p">(</span><span class="n">str</span> <span class="p">??</span> <span class="s">&quot;nilですね&quot;</span><span class="p">)</span>    <span class="c1">// strがnilのときに&quot;nilですね&quot;が表示される</span>
+</pre></div>
+
+
+<h3 id="nil-if-let">nil判定 if let</h3>
+<p>オプショナル型の値がnilかどうかで処理を分岐したい場合の書式。単純にif文でnilチェックをする事もできるが、Swiftでは if文の中で letに代入した結果の判定でnilチェックする方法が用意されている。</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nv">hoge</span> <span class="p">:</span> <span class="n">Hoge</span><span class="p">?</span> <span class="p">=</span> <span class="kc">nil</span>
+<span class="mf">1.</span> <span class="k">if</span> <span class="n">hoge</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{}</span>            <span class="c1">// そのまま</span>
+<span class="mf">2.</span> <span class="k">if</span> <span class="kd">let</span> <span class="nv">hogehoge</span> <span class="p">=</span> <span class="n">hoge</span> <span class="p">{</span>    <span class="c1">// hogeがnil以外なら真</span>
+      <span class="bp">print</span><span class="p">(</span><span class="n">hogehoge</span><span class="p">)</span>     <span class="c1">// 真のブロックで hogehoge が使用できる</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;hogeはnilだ&quot;</span><span class="p">);</span>
+   <span class="p">}</span>
+</pre></div>
+
+
+<h1 id="console">console</h1>
+<p><!-- console:: -->
+コンソールプログラム。</p>
+<h2 id="swift">swiftのコンソールプログラム作成</h2>
+<ul>
+<li>メニューの [File] - [New] - [Project]<br>
+    もしくは Cmd + Shift + N  </li>
+<li>左メニューの [OS X] - Application を選択  </li>
+<li>右リストの Command Line Tool を選択  </li>
+<li>右下の [Next] ボタンを押す  </li>
+</ul>
+<p><img alt="プロジェクト作成1" src="http://sunsunsoft.com/image/memo/swift_project.png">  </p>
+<ul>
+<li>Language を "Swift" に設定</li>
+</ul>
+<p><img alt="プロジェクト作成2" src="http://sunsunsoft.com/image/memo/swift_project2.png"></p>
+<h2 id="scanf">scanf</h2>
+<p><!-- scanf:: -->
+コンソールからユーザーの入力を受け付ける。C言語のscanfのようなもの</p>
+<div class="codehilite"><pre><span class="c1">// コンソールからユーザーの入力を受け付ける関数</span>
+<span class="kd">func</span> <span class="nf">input</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">keyboard</span> <span class="p">=</span> <span class="bp">NSFileHandle</span><span class="p">.</span><span class="n">fileHandleWithStandardInput</span><span class="p">()</span>
+    <span class="kd">var</span> <span class="nv">inputData</span> <span class="p">=</span> <span class="n">keyboard</span><span class="p">.</span><span class="n">availableData</span>
+    <span class="kd">var</span> <span class="nv">strData</span> <span class="p">=</span> <span class="bp">NSString</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">inputData</span><span class="p">,</span> <span class="n">encoding</span><span class="p">:</span> <span class="n">NSUTF8StringEncoding</span><span class="p">)</span><span class="o">!</span>
+
+    <span class="k">return</span> <span class="n">strData</span><span class="p">.</span><span class="n">stringByTrimmingCharactersInSet</span><span class="p">(</span><span class="bp">NSCharacterSet</span><span class="p">.</span><span class="n">newlineCharacterSet</span><span class="p">())</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">command</span> <span class="p">=</span> <span class="n">input</span><span class="p">()</span>
+<span class="k">switch</span> <span class="n">command</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="s">&quot;hoge&quot;</span>
+    <span class="c1">// ユーザーから&quot;hoge&quot;と入力された時の処理</span>
+    <span class="k">break</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="enum">列挙方 enum</h1>
+<p><!-- enum:: -->
+C言語のenumのようなもの。swiftのenumは高機能。<br>
+swiftのenumの特徴</p>
+<h2 id="_37">基本</h2>
+<div class="codehilite"><pre><span class="kd">enum</span> <span class="nc">Signal</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">Blue</span>       <span class="c1">// 青</span>
+    <span class="k">case</span> <span class="n">Yellow</span>     <span class="c1">// 黄</span>
+    <span class="k">case</span> <span class="n">Red</span>        <span class="c1">// 赤</span>
+<span class="p">}</span>
+
+<span class="c1">// １行に書く場合</span>
+<span class="kd">enum</span> <span class="nc">Signal</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">Blue</span><span class="p">,</span> <span class="n">Yellow</span><span class="p">,</span> <span class="n">Red</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2 id="_38">型を指定</h2>
+<p>Swiftのenumは型を指定できる。他の言語のenumは整数値しかもてないが</p>
+<div class="codehilite"><pre>  <span class="c1">// 整数</span>
+  <span class="kd">enum</span> <span class="nc">Signal</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="n">Blue</span>       <span class="c1">// 青</span>
+      <span class="k">case</span> <span class="n">Yellow</span>     <span class="c1">// 黄</span>
+      <span class="k">case</span> <span class="n">Red</span>        <span class="c1">// 赤</span>
+  <span class="p">}</span>
+
+  <span class="kd">enum</span> <span class="nc">Signal</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="n">Blue</span><span class="p">=</span><span class="mi">1</span>
+      <span class="k">case</span> <span class="n">Yellow</span><span class="p">=</span><span class="mi">2</span>
+      <span class="k">case</span> <span class="n">Red</span><span class="p">=</span><span class="mi">3</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 文字列を返す</span>
+  <span class="kd">enum</span> <span class="nc">SignalStr</span> <span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="n">Blue</span> <span class="p">=</span> <span class="s">&quot;青&quot;</span>
+      <span class="k">case</span> <span class="n">Yellow</span> <span class="p">=</span> <span class="s">&quot;黄&quot;</span>
+      <span class="k">case</span> <span class="n">Red</span> <span class="p">=</span> <span class="s">&quot;赤&quot;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 整数型enum変数に整数値を代入する方法</span>
+  <span class="kd">let</span> <span class="nv">signal</span> <span class="p">=</span> <span class="n">Signal</span><span class="p">.</span><span class="kd">init</span><span class="p">(</span><span class="n">rawValue</span><span class="p">:</span><span class="mi">1</span><span class="p">)</span><span class="o">!</span>
+</pre></div>
+
+
+<h2 id="_39">メソッドを定義</h2>
+<p>enum内に関数を定義して機能を持たせることができる</p>
+<div class="codehilite"><pre>  <span class="kd">enum</span> <span class="nc">Signal</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="n">Blue</span>
+      <span class="k">case</span> <span class="n">Yellow</span>
+      <span class="k">case</span> <span class="n">Red</span>
+      <span class="kd">func</span> <span class="nf">meaning</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+          <span class="k">switch</span><span class="p">(</span><span class="kc">self</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">case</span> <span class="p">.</span><span class="n">Blue</span><span class="p">:</span>
+              <span class="k">return</span> <span class="s">&quot;進め&quot;</span>
+          <span class="k">case</span> <span class="p">.</span><span class="n">Yellow</span><span class="p">:</span>
+              <span class="k">return</span> <span class="s">&quot;注意&quot;</span>
+          <span class="k">case</span> <span class="p">.</span><span class="n">Red</span><span class="p">:</span>
+              <span class="k">return</span> <span class="s">&quot;止れ&quot;</span>
+          <span class="p">}</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// enum型の変数に.をつけて呼び出す</span>
+  <span class="kd">let</span> <span class="nv">s</span> <span class="p">=</span> <span class="n">SignalF</span><span class="p">.</span><span class="n">Yellow</span>
+  <span class="bp">print</span><span class="p">(</span><span class="s">&quot;meaning:&quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="n">meaning</span><span class="p">())</span>
+</pre></div>
+
+
+<h2 id="_40">参照</h2>
+<div class="codehilite"><pre>  <span class="c1">// enum型.値</span>
+  <span class="kd">let</span> <span class="nv">signal1</span> <span class="p">=</span> <span class="n">Signal</span><span class="p">.</span><span class="n">Blue</span>
+  <span class="kd">let</span> <span class="nv">signal2</span> <span class="p">=</span> <span class="n">Signal</span><span class="p">.</span><span class="n">Red</span>
+
+  <span class="c1">// 関数の呼び出し</span>
+  <span class="kd">let</span> <span class="nv">s</span> <span class="p">=</span> <span class="n">Signal</span><span class="p">.</span><span class="n">Yello</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">meaning</span><span class="p">)</span>
+
+  <span class="c1">// 関連値</span>
+  <span class="c1">// あまり使わなさそうなのでスキップ</span>
+
+  <span class="c1">// switch文</span>
+  <span class="kd">let</span> <span class="nv">s</span> <span class="p">=</span> <span class="n">SignalF</span><span class="p">.</span><span class="n">Yellow</span>
+  <span class="k">switch</span> <span class="n">s</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="p">.</span><span class="n">Blue</span><span class="p">:</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;青&quot;</span><span class="p">)</span>
+  <span class="k">case</span> <span class="p">.</span><span class="n">Yellow</span><span class="p">:</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;黄&quot;</span><span class="p">)</span>
+  <span class="k">case</span> <span class="p">.</span><span class="n">Red</span><span class="p">:</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;赤&quot;</span><span class="p">)</span>
+  <span class="p">}</span>
+</pre></div>
+
+
+<h1 id="struct">構造体 struct</h1>
+<p><!-- struct:: -->
+主にデータを保持するために特化したクラス。
+機能的には継承、デストラクタが使用できないクラス。
+イニシャライザはinitをオーバーライドしない場合は全パラメータを引数で受け取るイニシャライザを自動で生成してくれる。</p>
+<div class="codehilite"><pre>  <span class="c1">// 宣言と参照</span>
+  <span class="kd">struct</span> <span class="nc">Author</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">name</span><span class="p">:</span> <span class="nb">String</span> <span class="p">=</span> <span class="s">&quot;不明&quot;</span>
+    <span class="kd">var</span> <span class="nv">birthday</span><span class="p">:</span> <span class="bp">NSDate</span><span class="p">?</span>
+
+    <span class="kd">func</span> <span class="nf">description</span><span class="p">()</span> <span class="p">{</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;name:</span><span class="si">\(</span><span class="n">name</span><span class="si">)</span><span class="s"> birthday:</span><span class="si">\(</span><span class="n">birth</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 構造体の値を書き換えるメソッドは先頭にmutatingをつける必要がある</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">flipY</span><span class="p">()</span> <span class="p">{</span>
+      <span class="n">x</span> <span class="p">=</span> <span class="o">-</span><span class="n">x</span>
+    <span class="p">}</span>
+
+  <span class="p">}</span>
+  <span class="kd">let</span> <span class="nv">author</span> <span class="p">=</span> <span class="n">Author</span><span class="p">()</span>
+  <span class="kd">let</span> <span class="nv">name</span> <span class="p">=</span> <span class="n">author</span><span class="p">.</span><span class="n">name</span>
+  <span class="kd">let</span> <span class="nv">birthday</span> <span class="p">:</span> <span class="bp">NSDate</span> <span class="p">=</span> <span class="n">author</span><span class="p">.</span><span class="n">birthday</span><span class="p">!</span>
+</pre></div>
+
+
+<h1 id="protocol">プロトコル protocol</h1>
+<p><!-- protocol:: -->
+Objective-Cのプロトコルとだいたい同じでメソッドと算出型プロパティのみ定義可能、プロパティは持てない
+プロトコルの特徴</p>
+<ul>
+<li>プロトコルの宣言ではインターフェースの定義のみ。実装は書かない</li>
+<li>メンバ変数(プロパティ)は持てない</li>
+<li>１つのクラスに複数のプロトコルを適用することができる</li>
+</ul>
+<h2 id="_41">プロトコルの宣言</h2>
+<div class="codehilite"><pre><span class="kd">protocol</span> <span class="nc">Protocol1</span> <span class="p">{</span>
+  <span class="c1">// メソッド</span>
+  <span class="kd">func</span> <span class="nf">hoge</span><span class="p">()</span>
+  <span class="kd">func</span> <span class="nf">hoge2</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">String</span>
+
+  <span class="c1">// 算出型プロパティ get/set を定義すると設定、参照の属性を指定できる</span>
+  <span class="kd">var</span> <span class="nv">str1</span> <span class="p">:</span> <span class="nb">String</span> <span class="p">{</span><span class="kr">get</span><span class="p">}</span>   <span class="c1">// 参照のみ</span>
+  <span class="kd">var</span> <span class="nv">str2</span> <span class="p">:</span> <span class="nb">String</span> <span class="p">{</span><span class="kr">get</span><span class="o">/</span><span class="kr">set</span><span class="p">}</span>   <span class="c1">// 参照/設定</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2 id="_42">プロトコルの実装</h2>
+<p>プロトコルを実装するには実装先のクラス宣言時に : の右側にプロトコル名を追加する</p>
+<div class="codehilite"><pre><span class="c1">// class クラス名 : プロトコル名</span>
+<span class="c1">// class クラス名 : 親クラス名, プロトコル名1, プロトコル名2...</span>
+
+<span class="kd">class</span> <span class="nc">Enemy</span> <span class="p">:</span> <span class="n">Protocol1</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nv">_str1</span> <span class="p">:</span> <span class="nb">String</span>
+  <span class="kd">var</span> <span class="nv">_str2</span> <span class="p">:</span> <span class="nb">String</span>
+
+  <span class="c1">// 実装 (プロトコルのメソッドを全部実装する)</span>
+  <span class="kd">func</span> <span class="nf">hoge</span><span class="p">()</span> <span class="p">{</span> <span class="bp">print</span><span class="p">(</span><span class="s">&quot;hoge&quot;</span><span class="p">)</span> <span class="p">}</span>
+  <span class="kd">func</span> <span class="nf">hoge2</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">&quot;hogehoge&quot;</span>
+  <span class="p">}</span>
+  <span class="kd">var</span> <span class="nv">str1</span> <span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">self</span><span class="p">.</span><span class="n">_str1</span>
+  <span class="p">}</span>
+  <span class="kd">var</span> <span class="nv">str2</span> <span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+    <span class="kr">get</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="kc">self</span><span class="p">.</span><span class="n">_str1</span>
+    <span class="p">}</span>
+    <span class="kr">set</span><span class="p">(</span><span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kc">self</span><span class="p">.</span><span class="n">_str2</span> <span class="p">=</span> <span class="n">str</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2 id="subscript">subscript 配列にアクセスするための定義</h2>
+<p><!-- subscript:: -->
+クラスのオブジェクトに対して [] アクセスされた時の処理を定義できる。見た目が配列っぽいけど機能は異なるため注意。
+擬似的に要素番号が連続していない配列などを作る事ができる。</p>
+<div class="codehilite"><pre><span class="kd">class</span> <span class="nc">TestSubscript</span>
+<span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">names</span> <span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span>
+    <span class="kd">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">names</span> <span class="p">=</span> <span class="p">[]</span>
+    <span class="p">}</span>
+
+    <span class="kd">subscript</span><span class="p">(</span><span class="n">index</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+        <span class="c1">// hensuu[index] で参照された時の処理 String を返す</span>
+        <span class="kr">get</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="n">names</span><span class="p">.</span><span class="bp">count</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="s">&quot;&quot;</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">names</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="c1">// hensuu[index] = name で代入された時の処理</span>
+        <span class="kr">set</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">index</span> <span class="o">&gt;</span> <span class="n">names</span><span class="p">.</span><span class="bp">count</span> <span class="p">{</span>
+                <span class="k">return</span>
+            <span class="p">}</span>
+            <span class="n">names</span><span class="p">.</span><span class="bp">insert</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">atIndex</span><span class="p">:</span> <span class="n">index</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="kd">let</span> <span class="nv">test1</span> <span class="p">=</span> <span class="n">TestSubscript</span><span class="p">()</span>
+<span class="n">test1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;111&quot;</span>
+<span class="n">test1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;222&quot;</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">test1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1">// 222</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">test1</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>  <span class="c1">// 111</span>
+</pre></div>
+
+
+<h1 id="exception">例外処理 exception</h1>
+<p><!-- exception:: try:: -->
+例外処理の発生とそのキャッチ<br>
+<a href="http://qiita.com/koishi/items/67cf4d0f51c4d79f1d22">Swift 2.0 エラー処理入門</a></p>
+<ul>
+<li>エラーを投げるメソッドが定義できる</li>
+<li>エラーの種類をenumで定義できる</li>
+<li>エラーを投げるメソッドを呼び出す場合は先頭に try をつける</li>
+<li>エラーを投げるメソッドは do ブロックの中で呼び出さなければならない</li>
+<li>エラーが発生した時にcatchブロックに処理がとぶ、ここでエラーに合わせた適切な処理をおこなう</li>
+</ul>
+<div class="codehilite"><pre><span class="c1">// エラー定義</span>
+<span class="n">throwされるエラーを定義する</span>
+<span class="kd">enum</span> <span class="nc">MyError</span> <span class="p">:</span> <span class="n">ErrorType</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">Error1</span>
+    <span class="k">case</span> <span class="n">Error2</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+
+<span class="c1">// エラーを投げるメソッド定義</span>
+<span class="c1">// メソッド定義の最後に throws をつける</span>
+<span class="kd">func</span> <span class="nf">hogeFunc</span><span class="p">(</span><span class="n">num</span> <span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="n">throws</span><span class="p">{</span>
+  <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">100</span> <span class="p">{</span>
+    <span class="c1">// throw で enumで定義したエラーを投げる</span>
+    <span class="n">throw</span> <span class="n">MyError</span><span class="p">.</span><span class="n">Erro1</span>
+  <span class="p">}</span> <span class="n">eles</span> <span class="k">if</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+    <span class="n">throw</span> <span class="n">MyError</span><span class="p">.</span><span class="n">Error2</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// do~catch</span>
+<span class="c1">// throws をつけて定義したメソッドを呼び出す場合は、メソッドの先頭に tryをつけて呼び出す</span>
+
+<span class="c1">// do ブロックの中でthrowsをつけたメソッドを呼び出す</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="c1">// throwsをつけたメソッドを呼び出す場合は try をつける</span>
+    <span class="n">try</span> <span class="n">hogeFunc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">try</span> <span class="n">hogeFunc</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">try</span> <span class="n">hogeFunc</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">catch</span> <span class="n">MyError</span><span class="p">.</span><span class="n">HogeError1</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;HogeError1 value is too low&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">catch</span> <span class="n">MyError</span><span class="p">.</span><span class="n">HogeError2</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;HogeError2 value is too large&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">catch</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Unkwnon Error&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// do~catch不要の書き方</span>
+<span class="c1">// throwsをつけたメソッドでも、try? をつけて呼び出せばdo~catchブロックで囲まなくてOK</span>
+
+<span class="c1">//try? do~catch が不要になる  エラー発生時、エラーを無視</span>
+  <span class="n">try</span><span class="p">?</span> <span class="n">hogeFunc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1">//try! do~catch が不要になる  エラー発生時、クラッシュ</span>
+  <span class="n">try</span><span class="p">!</span> <span class="n">hogeFunc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="c1">// defer doブロック処理の後に実行したい処理のブロック</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="n">defer</span> <span class="p">{</span>
+        <span class="c1">// エラーがあろうがなかろうが、最後に必ず実行される処理</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Fix defer&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">try</span> <span class="n">hogeFunc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">try</span> <span class="n">hogeFunc</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
+    <span class="n">defer</span> <span class="p">{</span>
+        <span class="c1">// エラーが起きなかった場合のみ、最後に実行される処理</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;No error defer&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">catch</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Error!!&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="others">その他 others</h1>
+<!-- others:: -->
+
+<h2 id="generics">ジェネリクス generics</h2>
+<p><!-- generics -->
+C++のテンプレートのようなもの
+型が違うだけで処理は同じような場合に、ジェネリックでどの型にも対応する処理を作成できる</p>
+<div class="codehilite"><pre>  <span class="kd">func</span> <span class="nf">bigger</span><span class="p">&lt;</span><span class="n">T</span><span class="p">:</span><span class="nb">Comparable</span><span class="p">&gt;(</span><span class="n">val1</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">val2</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">T</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">val1</span> <span class="o">&gt;</span> <span class="n">val2</span> <span class="p">?</span> <span class="n">val1</span> <span class="p">:</span> <span class="n">val2</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Intの変数</span>
+  <span class="kd">var</span> <span class="nv">i1</span> <span class="p">=</span> <span class="mi">10</span>
+  <span class="kd">var</span> <span class="nv">i2</span> <span class="p">=</span> <span class="mi">20</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">bigger</span><span class="p">(</span><span class="n">i1</span><span class="p">,</span> <span class="n">val2</span><span class="p">:</span><span class="n">i2</span><span class="p">))</span>
+
+  <span class="c1">// Floatの変数</span>
+  <span class="kd">var</span> <span class="nv">f1</span> <span class="p">:</span> <span class="nb">Float</span> <span class="p">=</span> <span class="mf">10.0</span>
+  <span class="kd">var</span> <span class="nv">f2</span> <span class="p">:</span> <span class="nb">Float</span> <span class="p">=</span> <span class="mf">20.0</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">bigger</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="n">val2</span><span class="p">:</span><span class="n">f2</span><span class="p">))</span>
+
+  <span class="kd">var</span> <span class="nv">d1</span> <span class="p">:</span> <span class="nb">Double</span> <span class="p">=</span> <span class="mf">10.0</span>
+  <span class="kd">var</span> <span class="nv">d2</span> <span class="p">:</span> <span class="nb">Double</span> <span class="p">=</span> <span class="mf">20.0</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">bigger</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">val2</span><span class="p">:</span><span class="n">d2</span><span class="p">))</span>
+
+  <span class="kd">var</span> <span class="nv">s1</span> <span class="p">:</span> <span class="nb">String</span> <span class="p">=</span> <span class="s">&quot;Mickey&quot;</span>
+  <span class="kd">var</span> <span class="nv">s2</span> <span class="p">:</span> <span class="nb">String</span> <span class="p">=</span> <span class="s">&quot;Miffy&quot;</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">bigger</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="n">val2</span><span class="p">:</span><span class="n">s2</span><span class="p">))</span>
+</pre></div>
+
+
+<h2 id="singleton">シングルトン singleton</h2>
+<p><!-- singleton:: -->
+遅延初期化＆スレッドセーフ対応版
+Swiftはstatic変数が使用できないので、</p>
+<div class="codehilite"><pre><span class="kd">class</span> <span class="nc">Singleton</span> <span class="p">{</span>
+    <span class="kd">class</span> <span class="nc">var</span> <span class="n">sharedInstance</span> <span class="p">:</span> <span class="n">Singleton</span> <span class="p">{</span>
+        <span class="kd">struct</span> <span class="nc">Static</span> <span class="p">{</span>
+            <span class="kd">static</span> <span class="kd">let</span> <span class="nv">instance</span> <span class="p">:</span> <span class="n">Singleton</span> <span class="p">=</span> <span class="n">Singleton</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">Static</span><span class="p">.</span><span class="n">instance</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nv">single</span> <span class="p">:</span> <span class="n">Singleton</span> <span class="p">=</span> <span class="n">Singleton</span><span class="p">.</span><span class="n">sharedInstance</span><span class="p">;</span>
+</pre></div>
+
+
+<h2 id="overload">演算子のオーバーロード overload</h2>
+<!-- operator:: overload:: -->
+
+<ul>
+<li>IntやFloat等のプリミティブ型以外の型（構造体）を演算子を使用して計算することが出来る。</li>
+<li>クラス同士を演算子(+,-,*,/等)で処理できる</li>
+</ul>
+<div class="codehilite"><pre>  <span class="c1">// 演算する構造体</span>
+  <span class="kd">struct</span> <span class="nc">Vector3D</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">x</span> <span class="p">:</span> <span class="nb">Float</span> <span class="p">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y</span> <span class="p">:</span> <span class="nb">Float</span> <span class="p">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">z</span> <span class="p">:</span> <span class="nb">Float</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="kd">var</span> <span class="nv">description</span> <span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;x:</span><span class="si">\(</span><span class="n">x</span><span class="si">)</span><span class="s"> y:</span><span class="si">\(</span><span class="n">y</span><span class="si">)</span><span class="s"> z:</span><span class="si">\(</span><span class="n">z</span><span class="si">)</span><span class="s">&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 二項演算子   A + B</span>
+  <span class="kd">func</span> <span class="o">+</span> <span class="p">(</span><span class="kr">left</span><span class="p">:</span> <span class="n">Vector3D</span><span class="p">,</span> <span class="kr">right</span><span class="p">:</span> <span class="n">Vector3D</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Vector3D</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">x</span><span class="p">:</span><span class="kr">left</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="kr">right</span><span class="p">.</span><span class="n">x</span><span class="p">,</span>
+          <span class="n">y</span><span class="p">:</span><span class="kr">left</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="kr">right</span><span class="p">.</span><span class="n">y</span><span class="p">,</span>
+          <span class="n">z</span><span class="p">:</span><span class="kr">left</span><span class="p">.</span><span class="n">z</span> <span class="o">+</span> <span class="kr">right</span><span class="p">.</span><span class="n">z</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="c1">//単項演算子   -B</span>
+  <span class="kr">prefix</span> <span class="kd">func</span> <span class="o">-</span> <span class="p">(</span><span class="n">vector</span> <span class="p">:</span> <span class="n">Vector3D</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Vector3D</span><span class="p">{</span>
+      <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">x</span><span class="p">:</span><span class="o">-</span><span class="n">vector</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="o">-</span><span class="n">vector</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span><span class="o">-</span><span class="n">vector</span><span class="p">.</span><span class="n">z</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="c1">//複合代入演算子 A += B</span>
+  <span class="kd">func</span> <span class="o">+=</span> <span class="p">(</span><span class="kr">inout</span> <span class="kr">left</span> <span class="p">:</span> <span class="n">Vector3D</span><span class="p">,</span> <span class="kr">right</span> <span class="p">:</span> <span class="n">Vector3D</span><span class="p">){</span>
+      <span class="kr">left</span> <span class="p">=</span> <span class="kr">left</span> <span class="o">+</span> <span class="kr">right</span>
+  <span class="p">}</span>
+
+  <span class="c1">// その他、減算&#39;-&#39; やかけ算&#39;*&#39; を行う事もできる</span>
+</pre></div>
+
+
+<h2 id="typealias">タイプエイリアス typealias</h2>
+<p><!-- typealias -->
+タイプエイリアスとは、型の別名定義のことです。
+C言語のtypedefのように、既存の型に別名をつけて使用することができます。</p>
+<div class="codehilite"><pre>  <span class="kd">typealias</span> <span class="n">YorN</span> <span class="p">=</span> <span class="nb">Bool</span>
+  <span class="kd">typealias</span> <span class="n">FuncType</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)-&gt;</span><span class="nb">Int</span>
+
+  <span class="kd">typealias</span> <span class="n">Money</span> <span class="p">=</span> <span class="nb">Int</span>
+  <span class="kd">let</span> <span class="nv">m</span><span class="p">:</span> <span class="n">Money</span> <span class="p">=</span> <span class="mi">100</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>  <span class="c1">// 100</span>
+
+  <span class="kd">typealias</span> <span class="n">BodyStatus</span> <span class="p">=</span> <span class="p">(</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Double</span><span class="p">)</span>
+  <span class="kd">var</span> <span class="nv">height</span><span class="p">:</span><span class="n">BodyStatus</span><span class="p">?</span>
+  <span class="kd">var</span> <span class="nv">weight</span><span class="p">:</span><span class="n">BodyStatus</span><span class="p">?</span>
+
+  <span class="n">height</span> <span class="p">=</span> <span class="p">(</span><span class="s">&quot;身長&quot;</span><span class="p">,</span> <span class="mf">170.0</span><span class="p">)</span>
+  <span class="n">weight</span> <span class="p">=</span> <span class="p">(</span><span class="s">&quot;体重&quot;</span><span class="p">,</span> <span class="mf">63.5</span><span class="p">)</span>
+</pre></div>
+
+
+<h2 id="_43">ネストした型</h2>
+<p>Swiftではクラスや構造体、列挙型の定義の中に、さらにクラスや構造体、列挙型を定義することができます。型をネストして定義</p>
+<div class="codehilite"><pre>  <span class="kd">class</span> <span class="nc">CNest1</span> <span class="p">{</span>
+      <span class="kd">class</span> <span class="nc">CNest2</span> <span class="p">{</span>
+          <span class="kd">class</span> <span class="nc">CNest3</span> <span class="p">{</span>
+              <span class="kd">func</span> <span class="nf">test1</span><span class="p">()</span> <span class="p">{</span>
+                  <span class="bp">print</span><span class="p">(</span><span class="s">&quot;CNest3:test1&quot;</span><span class="p">)</span>
+              <span class="p">}</span>
+          <span class="p">}</span>
+          <span class="kd">var</span> <span class="nv">nest3</span> <span class="p">:</span> <span class="n">CNest3</span> <span class="p">=</span> <span class="n">CNest3</span><span class="p">()</span>
+          <span class="kd">func</span> <span class="nf">test1</span><span class="p">()</span> <span class="p">{</span>
+              <span class="n">nest3</span><span class="p">.</span><span class="n">test1</span><span class="p">()</span>
+              <span class="bp">print</span><span class="p">(</span><span class="s">&quot;CNest2:test1&quot;</span><span class="p">)</span>
+          <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="kd">var</span> <span class="nv">nest2</span> <span class="p">:</span> <span class="n">CNest2</span> <span class="p">=</span> <span class="n">CNest2</span><span class="p">()</span>
+      <span class="kd">func</span> <span class="nf">test1</span><span class="p">()</span> <span class="p">{</span>
+          <span class="n">nest2</span><span class="p">.</span><span class="n">test1</span><span class="p">()</span>
+          <span class="bp">print</span><span class="p">(</span><span class="s">&quot;CNest1:test1&quot;</span><span class="p">)</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="kd">var</span> <span class="nv">nest1</span> <span class="p">:</span> <span class="n">CNest1</span> <span class="p">=</span> <span class="n">CNest1</span><span class="p">()</span>
+<span class="c1">//    var nest2 : CNest2 = CNest2()     これはできない。CNest2が使用できるのはCNest1のスコープ内だけ</span>
+</pre></div>
+
+
+<h1 id="technique">テクニック technique</h1>
+<p><!-- technique:: -->
+いろいろなテクニックや知識</p>
+<h2 id="swift_1">swiftでプリプロセッサを使用する</h2>
+<p><code>#if</code>系のプリプロセッサが使用出来る。<code>#define</code>系は使用できない。<br>
+<code>Build Settings - [Other Swift Flags]</code> に以下のパラメータを追加する。</p>
+<div class="codehilite"><pre>-D DEBUG
+</pre></div>
+
+
+<p>.swift の処理</p>
+<div class="codehilite"><pre><span class="cp">#if</span> <span class="cp">DEBUG</span>
+  <span class="c1">// OK</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#if</span> <span class="kc">true</span>
+  <span class="c1">// これもOK</span>
+<span class="cp">#endif</span>
+</pre></div>
+
+
+<h1 id="objective-c">Objective-Cの移植</h1>
+<h2 id="nsclass">NSClass</h2>
+<p><a href="http://qiita.com/kkoide1332/items/8a64011a1a5e0965066f">Swiftの配列の書き方をObjective-cと比較しながらまとめる</a></p>
+<h2 id="arrayswiftnsarrayobjective-c">Array(swift)とNSArray(Objective-C)の違い</h2>
+<h3 id="_44">参照渡しか値渡しか</h3>
+<p>swiftは値渡し。変数値を別変数に設定するときに値をコピーしてから渡す。コピー元の変更がコピー先の変数に影響しない
+objCは参照渡し。変数値を別変数値に設定する時にコピーを作らない。コピー元の変数がコピー先の変数に影響する。</p>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

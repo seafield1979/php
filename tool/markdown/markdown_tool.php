@@ -26,9 +26,9 @@ function makeH1BlockList($markdownHtmlFile)
             break;
         }
         // <h1 id="hoge"></h1> の行を境界にファイルを作成する
-        preg_match('/^<h1 id="(.*)"/', $line, $m);
+        preg_match('/^<h1 id="(.*)">(.*)<\/h1>/', $line, $m);
 
-        if (count($m) == 2) {
+        if (count($m) == 3) {
             // １つ前のループのデータを$h1_block_listに追加
             if ($key) {
                 $h1_block_list[$block_cnt] = array("key"=>$key, "body" => $h1_block_body);
@@ -38,22 +38,28 @@ function makeH1BlockList($markdownHtmlFile)
 
             $key = $m[1];
             $getFlag = true;
+
+            // h1のタイトル文字列をスペースで分割した左側のみ残す
+            $titles = explode(" ", $m[2]);
+            $h1_block_body .= "<h1 id=\"$m[1]\">$titles[0]</h1>";
         }
-        if ($getFlag) {
-            $h1_block_body .= $line;
+        else {
+            if ($getFlag) {
+                $h1_block_body .= $line;
+            }
         }
     }
     $h1_block_list[$block_cnt] = array("key"=>$key, "body" => $h1_block_body);
 
     
-    // サイドバーに表示する用のリンク部分を取得
+    // ページの見出しとサイドバーに表示する用のリンク部分を取得
     $mode = 0;
     $block_cnt = 0;
     $link_html = "";
     $title = "";
     // ブロック検索文字列
     // <li><a href="#uiwindow">UIWindow</a><ul> のような行を見つける
-    $searchStr = "/<li><a href=\"#(.+)\">(.+)<\/a>/";
+    $searchStr = "/<li><a href=\"#(.+)\">(.+)<\/a>(.*)/";
                 
     foreach($file as $line) {
         if ($mode == 0) {
@@ -83,9 +89,12 @@ function makeH1BlockList($markdownHtmlFile)
             elseif (preg_match($searchStr, $line, $m) &&
                      $m[1]==$h1_block_list[$block_cnt]["key"] ) 
             {
-                $link_html = $line;
-                $title = $m[2];
-                    
+                // h1のタイトル スペースで２つ以上に分割できたら左側の文字列だけ取得する
+                $titles = explode(" ", $m[2]);
+                $title = $titles[0];
+
+                $link_html = "<li><a href=\"#$m[1]\">$title</a>$m[3]";
+
                 // h1のブロックのリンクと同じ行に </li>があったら１行でhtmlが完結
                 if (strrpos($line, "</li>") !== false) {
                     $h1_block_list[$block_cnt]["link"] = $link_html;

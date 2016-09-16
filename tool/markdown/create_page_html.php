@@ -20,7 +20,7 @@
         swift_<h1の名前>.html  (たくさん)
 
  */
-require_once("markdown_html_tool.php");
+require_once("markdown_tool.php");
 
 if ($argc < 5) {
     exit("not enought parameters!\n\n");
