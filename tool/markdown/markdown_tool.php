@@ -2,6 +2,7 @@
 /*
   マークダウンのhtmlを処理するための関数
 */
+require_once("../Library/phpQuery-onefile.php");
 
 /* マークダウンで出力されたhtmlファイルを h1 タグ毎に分割し配列形式で出力する
      $markdownHtmlFile:
@@ -175,32 +176,108 @@ function makeSidebarLinks($outputFile, $block_list) {
 /*
     テンプレートのファイルを分割する
     $templateFile   テンプレートファイル名
+    $topHtmlName    カテゴリーのトップファイル名
+    $titleText      タイトルタグに表示する文字列
 
     @return   array([0]  先頭 ~ insert point まで
                     [1]  insert point ~ sidebar point まで
                     [2]  sidebar point ~ 末尾 まで
                     )
  */
-function getTemplate($templateFile) {
-    if (! ($file = file_get_contents($templateFile))) {
+function getTemplate($templateFile, $topHtmlName, $titleText) {
+    if (! ($html = file_get_contents($templateFile))) {
         exit("couldn't open inputfile!");
     }
+
+    // タイトルを書き換えるためにPHP QueryでDOMを取得する
+    // Get DOM Object
+    $dom = phpQuery::newDocument($html);
+    $tag_title_a = $dom["#boxB .category_top > a"];
+    $tag_title_a->attr("href", $topHtmlName);
+    $tag_title_a->text($titleText);    
+
+    $html = (string)$dom;
 
     $blocks = array();
     $markStrLen1 = strlen("*** insert point ***");
     $markStrLen2 = strlen("*** sidebar point ***");
 
-    if ($pos = strpos($file, "*** insert point ***")) {
-        if ($pos2 = strpos($file, "*** sidebar point ***")) {
+    if ($pos = strpos($html, "*** insert point ***")) {
+        if ($pos2 = strpos($html, "*** sidebar point ***")) {
             // insert point までのブロックを $blocksに追加
-            $blocks[0] = substr($file, 0, $pos - 1);
+            $blocks[0] = substr($html, 0, $pos - 1);
             // insert point から sidebar point までのブロックを追加
-            $blocks[1] = substr($file, $pos + $markStrLen1, $pos2 - $pos - $markStrLen1);
+            $blocks[1] = substr($html, $pos + $markStrLen1, $pos2 - $pos - $markStrLen1);
             // sidebar point から末尾までのブロックを追加
-            $blocks[2] = substr($file, $pos2 + $markStrLen2);
+            $blocks[2] = substr($html, $pos2 + $markStrLen2);
         }
     }
     return $blocks;
 }
+
+
+
+// マークダウンで出力されたhtmlファイルを h1のid名をリンク名としてaタグを作成し、topHtmlファイルに挿入する
+// <a href="hoge"></a>
+function createTopHtml($markdownFile, $link_html_head, $outputFile, $template, $sidebarLinks) {
+
+    $html = file_get_contents($markdownFile);
+
+    // Get DOM Object
+    $dom = phpQuery::newDocument($html);
+
+    $tags = $dom["div.toc > ul > li"];
+
+    foreach($tags as $tag) {
+        foreach( pq($tag)[">a"] as $element) {
+            $topKey = pq($element)->attr("href");
+            $topKey = str_replace("#", "", $topKey);
+            $fileName = $link_html_head . $topKey . ".html";
+            pq($element)->attr("href", $fileName);
+
+            // h1ブロックのテキスト部分をスペースで分割して左側だけ残す
+            $titles = explode(" ", pq($element)->text());
+            pq($element)->text($titles[0]);
+        }
+
+        $ul_tag = pq($tag)[">ul"];
+        if (count($ul_tag) > 0) {
+            tracUlTree($ul_tag, $fileName, 1);
+        }
+    }
+
+    // 更新を反映させるために再取得
+    //$tags = $dom["div.toc > ul > li"];
+    
+    // 置換チェック用
+    //print($tags);
+
+    // ファイル出力
+    $fp = fopen($outputFile, "w");
+    fputs($fp, $template[0]);
+    fputs($fp, $tags);
+    fputs($fp, $template[1]);
+    fputs($fp, $sidebarLinks);
+    fputs($fp, $template[2]);
+    fclose($fp);
+
+    print("output ${outputFile} \n");
+}
+
+function tracUlTree($tag, $fileName, $nest) {
+    $li_tags = $tag["> li"];
+
+    foreach($li_tags as $li_tag) {
+        foreach( pq($li_tag)[">a"] as $element) {
+            pq($element)->attr("href", $fileName . pq($element)->attr("href"));
+        }
+
+        $ul_tags = pq($li_tag)[">ul"];
+        if (count($ul_tags) > 0) {
+            tracUlTree($ul_tags, $fileName, $nest);
+        }
+    }
+}
+
 
 ?>
