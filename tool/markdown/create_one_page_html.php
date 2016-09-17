@@ -6,7 +6,11 @@
         php create_one_page_html.php <マークダウンhtmlファイル名>
                                  <テンプレートhtmlファイル名>
                                  <出力先ファイル名>
-        php create_one_page_html.php _markdown.html _markdown_template.html　./markdown/_markdown_top.html
+                                 <タイトルに表示するテキスト>
+        php create_one_page_html.php _markdown.html
+                            _markdown_template.html
+                            ./markdown/_markdown_top.html
+                            "マークダウン"
 
     入力
         _markdown.html
@@ -26,12 +30,20 @@ if ($argc < 4) {
 
 // マークダウンで出力されたhtmlファイルを h1のid名をリンク名としてaタグを作成し、topHtmlファイルに挿入する
 // <a href="hoge"></a>
-function createTopHtml($markdownFile, $outputFile, $template) {
+function createOneTopHtml($markdownFile, $outputFile, $template) {
 
     $html = file_get_contents($markdownFile);
 
     // Get DOM Object
     $dom = phpQuery::newDocument($html);
+
+    // h1ブロックの不要な文字を削除する処理
+    $tags = $dom["div.toc > ul > li > a"];
+    foreach($tags as $element) {
+        // h1ブロックのテキスト部分をスペースで分割して左側だけ残す
+        $titles = explode(" ", pq($element)->text());
+        pq($element)->text($titles[0]);
+    }
 
     $tag_article = $dom["article#content"];
     $tag_toc = $dom["div.toc"];
@@ -48,22 +60,12 @@ function createTopHtml($markdownFile, $outputFile, $template) {
     print("output ${outputFile} \n");
 }
 
-function tracUlTree($tag, $fileName, $nest) {
-    $li_tags = $tag["> li"];
+$markdownHtml = $argv[1];
+$templateHtml = $argv[2];
+$topHtmlName = $argv[3];
+$titleText = $argv[4];
 
-    foreach($li_tags as $li_tag) {
-        foreach( pq($li_tag)[">a"] as $element) {
-            pq($element)->attr("href", $fileName . pq($element)->attr("href"));
-        }
-
-        $ul_tags = pq($li_tag)[">ul"];
-        if (count($ul_tags) > 0) {
-            tracUlTree($ul_tags, $fileName, $nest);
-        }
-    }
-}
-
-$template = getTemplate($argv[2]);
-createTopHtml($argv[1], $argv[3], $template);
+$template = getTemplate($templateHtml, $topHtmlName, $titleText);
+createOneTopHtml($markdownHtml, $topHtmlName, $template);
 
 ?>
