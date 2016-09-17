@@ -51,7 +51,7 @@ function createOneTopHtml($markdownFile, $outputFile, $template) {
     // ファイル出力
     $fp = fopen($outputFile, "w");
     fputs($fp, $template[0]);
-    fputs($fp, $tag_article);
+    fputs($fp, $tag_article->html());
     fputs($fp, $template[1]);
     fputs($fp, $tag_toc);
     fputs($fp, $template[2]);

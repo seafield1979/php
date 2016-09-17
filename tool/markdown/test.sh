@@ -13,12 +13,20 @@ function create_sublime() {
     php create_htmls.php "_sublime_memo.html" "_template.html" "./sublime/" "sublime_" "_sublime_top.html" "Sublime Text 3"
 }
 
+#Macメモ
+function create_mac() {
+    if [ ! -e mac ]; then
+        `mkdir mac`
+    fi
+    php create_one_page_html.php "_mac_memo.html" "_template.html" "./mac/_mac_top.html" "Mac(OSX)メモ"
+}
+
 #Markdown
 function create_markdown() {
     if [ ! -e markdown ]; then
         `mkdir markdown`
     fi
-    php create_one_page_html.php "_markdown.html" "_markdown_template.html" "./markdown/_markdown_top.html" "マークダウン"
+    php create_one_page_html.php "_markdown.html" "_template.html" "./markdown/_markdown_top.html" "マークダウン"
 }
 
 #Shell Script
@@ -53,9 +61,10 @@ function create_swift_iOS() {
     php create_htmls.php "_swift_iOS_memo.html" "_template.html" "./swift_iOS/" "swift_iOS_" "_swift_iOS_top.html" "Swift iOS プログラミング"
 }
 
-# create_sublime
-# create_markdown
-create_shell
-create_php
-create_swift
-create_swift_iOS
+create_mac
+create_sublime
+create_markdown
+# create_shell
+# create_php
+# create_swift
+# create_swift_iOS
