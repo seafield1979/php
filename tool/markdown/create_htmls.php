@@ -40,8 +40,8 @@ $template = getTemplate($templateHtml, $topHtmlName, $titleText);
 $block_list = makeH1BlockList($markdownHtml);
 createHtmls($outputDir, $htmlName, $block_list, $template);
 
+
 // top htmlファイル出力
-$block_list = makeH1BlockList($markdownHtml);
 $sidebarLinks = makeSidebarLinks($htmlName, $block_list);
 createTopHtml($markdownHtml, $htmlName, $outputDir . $topHtmlName, $template, $sidebarLinks);
 

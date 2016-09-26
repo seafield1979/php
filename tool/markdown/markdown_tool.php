@@ -15,7 +15,7 @@ require_once("../Library/phpQuery-onefile.php");
 function makeH1BlockList($markdownHtmlFile)
 {
     $file = file($markdownHtmlFile);
-    $h1_block_list = array();
+    $block_list = array();
     $getFlag = false;
     $block_cnt = 0;
     $key = null;
@@ -30,9 +30,9 @@ function makeH1BlockList($markdownHtmlFile)
         preg_match('/^<h1 id="(.*)">(.*)<\/h1>/', $line, $m);
 
         if (count($m) == 3) {
-            // １つ前のループのデータを$h1_block_listに追加
+            // １つ前のループのデータを$block_listに追加
             if ($key) {
-                $h1_block_list[$block_cnt] = array("key"=>$key, "body" => $h1_block_body);
+                $block_list[$block_cnt] = array("key"=>$key, "body" => $h1_block_body);
                 $h1_block_body = "";
                 $block_cnt++;
             }
@@ -41,8 +41,7 @@ function makeH1BlockList($markdownHtmlFile)
             $getFlag = true;
 
             // h1のタイトル文字列をスペースで分割した左側のみ残す
-            $titles = explode(" ", $m[2]);
-            $h1_block_body .= "<h1 id=\"$m[1]\">$titles[0]</h1>";
+            $h1_block_body .= "<h1 id=\"$m[1]\">$m[2]</h1>";
         }
         else {
             if ($getFlag) {
@@ -50,68 +49,30 @@ function makeH1BlockList($markdownHtmlFile)
             }
         }
     }
-    $h1_block_list[$block_cnt] = array("key"=>$key, "body" => $h1_block_body);
+    $block_list[$block_cnt] = array("key"=>$key, "body" => $h1_block_body);
 
     
     // ページの見出しとサイドバーに表示する用のリンク部分を取得
-    $mode = 0;
     $block_cnt = 0;
-    $link_html = "";
-    $title = "";
-    // ブロック検索文字列
-    // <li><a href="#uiwindow">UIWindow</a><ul> のような行を見つける
-    $searchStr = "/<li><a href=\"#(.+)\">(.+)<\/a>(.*)/";
-                
-    foreach($file as $line) {
-        if ($mode == 0) {
-            // リンクの
-            if (strpos($line, '<div class="toc">') !== false) {
-                $mode = 1;
-            }
+    $html = file_get_contents($markdownHtmlFile);
+    $dom = phpQuery::newDocument($html);
+    $h1_tags = $dom[".toc > ul > li"];
+
+    foreach($h1_tags as $tag) {
+        $keyName = pq($tag)['> a']->attr("href");
+        // http://127.0.0.1... の部分を除去
+        preg_match("/.*#(.*)/", $keyName, $m);
+        if(count($m) > 0) {
+            $keyName = $m[1];
         }
-        elseif ($mode > 0) {
-            // ここでリンクのリストを取得する
-            if (strpos($line, '</div>') !== false) {
-                // ファイルが開けなかったので終了
-                break;
-            }
-            if ($mode == 2 && $line == "</ul>\n") {
-                // 保存
-                $link_html .= $line;
-                $h1_block_list[$block_cnt]["link"] = $link_html;
-                $h1_block_list[$block_cnt]["title"] = $title;
-
-                $block_cnt++;
-                if ($block_cnt >= count($h1_block_list)){
-                    break;
-                }
-                $mode = 1;
-            }
-            elseif (preg_match($searchStr, $line, $m) &&
-                     $m[1]==$h1_block_list[$block_cnt]["key"] ) 
-            {
-                // h1のタイトル スペースで２つ以上に分割できたら左側の文字列だけ取得する
-                $titles = explode(" ", $m[2]);
-                $title = $titles[0];
-
-                $link_html = "<li><a href=\"#$m[1]\">$title</a>$m[3]";
-
-                // h1のブロックのリンクと同じ行に </li>があったら１行でhtmlが完結
-                if (strrpos($line, "</li>") !== false) {
-                    $h1_block_list[$block_cnt]["link"] = $link_html;
-                    $h1_block_list[$block_cnt]["title"] = $title;
-                    $block_cnt++;
-                }
-                else {
-                    $mode = 2;  // </ul>を探すモード
-                }
-            }
-            else {
-                $link_html .= $line;
-            }
+        echo $block_list[$block_cnt]["key"] . " " . $keyName . "\n"; 
+        if ($block_list[$block_cnt]["key"] == $keyName) {
+            $block_list[$block_cnt]["link"] = pq($tag);
+            $block_list[$block_cnt]["title"] = pq($tag)['> a']->text();
         }
+        $block_cnt++;
     }
-    return $h1_block_list;
+    return $block_list;
 }
 
 
@@ -230,14 +191,14 @@ function createTopHtml($markdownFile, $link_html_head, $outputFile, $template, $
 
     foreach($tags as $tag) {
         foreach( pq($tag)[">a"] as $element) {
-            $topKey = pq($element)->attr("href");
-            $topKey = str_replace("#", "", $topKey);
+            $topKey = pq($element)->attr("href"); 
+            // http://127.0.0.1... の部分を除去
+            preg_match("/.*#(.*)/", $topKey, $m);
+            if (count($m) > 0) {
+                $topKey = $m[1];
+            }
             $fileName = $link_html_head . $topKey . ".html";
             pq($element)->attr("href", $fileName);
-
-            // h1ブロックのテキスト部分をスペースで分割して左側だけ残す
-            $titles = explode(" ", pq($element)->text());
-            pq($element)->text($titles[0]);
         }
 
         $ul_tag = pq($tag)[">ul"];
@@ -246,9 +207,6 @@ function createTopHtml($markdownFile, $link_html_head, $outputFile, $template, $
         }
     }
 
-    // 更新を反映させるために再取得
-    //$tags = $dom["div.toc > ul > li"];
-    
     // 置換チェック用
     //print($tags);
 
@@ -269,7 +227,13 @@ function tracUlTree($tag, $fileName, $nest) {
 
     foreach($li_tags as $li_tag) {
         foreach( pq($li_tag)[">a"] as $element) {
-            pq($element)->attr("href", $fileName . pq($element)->attr("href"));
+            $key = pq($element)->attr("href");
+            // http://127.0.0.1... の部分を除去
+            preg_match("/.*(#.*)/", $key, $m);
+            if(count($m) > 0) {
+                $key = $m[1];
+            }
+            pq($element)->attr("href", $fileName . $key);
         }
 
         $ul_tags = pq($li_tag)[">ul"];
