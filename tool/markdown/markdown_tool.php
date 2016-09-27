@@ -60,11 +60,8 @@ function makeH1BlockList($markdownHtmlFile)
 
     foreach($h1_tags as $tag) {
         $keyName = pq($tag)['> a']->attr("href");
-        // http://127.0.0.1... の部分を除去
-        preg_match("/.*#(.*)/", $keyName, $m);
-        if(count($m) > 0) {
-            $keyName = $m[1];
-        }
+        $keyName = substr($keyName, 1);     // 先頭の # を除去
+        
         echo $block_list[$block_cnt]["key"] . " " . $keyName . "\n"; 
         if ($block_list[$block_cnt]["key"] == $keyName) {
             $block_list[$block_cnt]["link"] = pq($tag);
@@ -192,11 +189,7 @@ function createTopHtml($markdownFile, $link_html_head, $outputFile, $template, $
     foreach($tags as $tag) {
         foreach( pq($tag)[">a"] as $element) {
             $topKey = pq($element)->attr("href"); 
-            // http://127.0.0.1... の部分を除去
-            preg_match("/.*#(.*)/", $topKey, $m);
-            if (count($m) > 0) {
-                $topKey = $m[1];
-            }
+            $topKey = substr($topKey, 1);  // 先頭の # を除去
             $fileName = $link_html_head . $topKey . ".html";
             pq($element)->attr("href", $fileName);
         }
@@ -227,13 +220,7 @@ function tracUlTree($tag, $fileName, $nest) {
 
     foreach($li_tags as $li_tag) {
         foreach( pq($li_tag)[">a"] as $element) {
-            $key = pq($element)->attr("href");
-            // http://127.0.0.1... の部分を除去
-            preg_match("/.*(#.*)/", $key, $m);
-            if(count($m) > 0) {
-                $key = $m[1];
-            }
-            pq($element)->attr("href", $fileName . $key);
+            pq($element)->attr("href", $fileName . pq($element)->attr("href"));
         }
 
         $ul_tags = pq($li_tag)[">ul"];

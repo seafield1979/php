@@ -16,17 +16,14 @@ $options = getopt("o:", $longopt);
 // 結合先のファイル
 $joinedText = "";
 
-
 if (isset($options["list"])) {
     // 指定したファイル内のファイルリストをすべて結合
     $fileList = file($options["list"]);
     foreach ($fileList as $fileName) {
-        echo $fileName;
-
         // 改行を除去
         $fileName = str_replace("\n", "", $fileName);
-         $text = file_get_contents($fileName) . "\n\n";  // 前のファイルのテーブル等が繋がらないように改行を入れる
-         $joinedText .= $text;
+        $text = readMyFile($fileName);
+        $joinedText .= $text;
     }
 } else if (isset($options["dir"])) {
     // ディレクトリ内の指定拡張しファイルをすべて結合
@@ -50,11 +47,25 @@ if (isset($options["list"])) {
 
             $file_info = pathinfo($file);
             if ($file_info['extension'] == $extension) {
-                $text = file_get_contents($filePath);
-                $joinedText .= $text . "\n\n";  // 前のファイルのテーブルやリストが繋がらないように改行を入れる
+                $text = readMyFile($filePath);
+                $joinedText .= $text;
             }
         }
     }
+}
+
+// ファイルを読み込む
+// 読み込めなかったらプログラム終了
+function readMyFile($fileName) {
+    $fp = fopen($fileName, "r");
+    if ($fp === FALSE) {
+        exit($fileName . " ファイルが開けませんでした\n");
+    }
+    $text = fread($fp, filesize($fileName));
+    $text .= "\n\n"; // テーブル等が次のファイルに続くのを防ぐため改行を入れる
+    fclose($fp);
+
+    return $text;
 }
 
 // ファイルに書き込み
