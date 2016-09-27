@@ -24,16 +24,19 @@
 
 require_once("markdown_tool.php");
 
-if ($argc < 7) {
-    print("not enought input parameters." );
+ $options = getopt("a",
+                     array("mdHtml:", "template:", "topTemplate:", "outputDir:", "htmlName:", "topHtmlName:", "titleText:"));
+if (count($options) < 7) {
+    exit("not enought parameters\n");
 }
 
-$markdownHtml = $argv[1];
-$templateHtml = $argv[2];
-$outputDir = $argv[3];
-$htmlName = $argv[4];
-$topHtmlName = $argv[5];
-$titleText = $argv[6];
+$markdownHtml = $options["mdHtml"];
+$templateHtml = $options["template"];
+$templateTop = $options["topTemplate"];
+$outputDir = $options["outputDir"];
+$htmlName = $options["htmlName"];
+$topHtmlName = $options["topHtmlName"];
+$titleText = $options["titleText"];
 
 // 分割htmlファイル出力
 $template = getTemplate($templateHtml, $topHtmlName, $titleText);

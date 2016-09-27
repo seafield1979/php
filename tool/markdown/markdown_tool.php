@@ -15,6 +15,9 @@ require_once("../Library/phpQuery-onefile.php");
 function makeH1BlockList($markdownHtmlFile)
 {
     $file = file($markdownHtmlFile);
+    if ($file === FALSE) {
+        exit($markdownHtmlFile . " couldn't open!!\n");
+    }
     $block_list = array();
     $getFlag = false;
     $block_cnt = 0;
